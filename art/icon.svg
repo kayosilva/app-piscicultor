@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Ícone/badge completo: peixe branco sobre fundo teal arredondado.
+       Usado para o ícone legado do launcher e no splash (cantos transparentes). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#00897B"/>
+      <stop offset="1" stop-color="#00695C"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1024" height="1024" rx="224" fill="url(#bg)"/>
+  <g transform="translate(512,512) scale(1.14) translate(-512,-512)">
+    <g transform="translate(24,28)" fill="#FFFFFF" stroke="none">
+      <path d="M335 448 L214 356 Q286 448 214 540 Z"/>
+      <path d="M462 320 Q527 272 592 326 Q528 342 462 320 Z"/>
+      <ellipse cx="524" cy="448" rx="205" ry="142"/>
+      <circle cx="642" cy="416" r="25" fill="#004D40"/>
+      <path d="M244 636 Q326 594 408 636 T572 636 T736 636" fill="none"
+            stroke="#FFFFFF" stroke-width="32" stroke-linecap="round"/>
+      <path d="M300 700 Q368 664 436 700 T572 700 T690 700" fill="none"
+            stroke="#FFFFFF" stroke-width="26" stroke-linecap="round" opacity="0.72"/>
+    </g>
+  </g>
+</svg>

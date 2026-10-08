@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Marca "Piscicultor": peixe estilizado sobre ondas. Branco, fundo
+       transparente. Usada como foreground do ícone adaptativo e no splash. -->
+  <g transform="translate(24,28)" fill="#FFFFFF" stroke="none">
+    <!-- cauda -->
+    <path d="M335 448 L214 356 Q286 448 214 540 Z"/>
+    <!-- nadadeira dorsal -->
+    <path d="M462 320 Q527 272 592 326 Q528 342 462 320 Z"/>
+    <!-- corpo -->
+    <ellipse cx="524" cy="448" rx="205" ry="142"/>
+    <!-- olho (tom escuro, lê como olho no corpo branco) -->
+    <circle cx="642" cy="416" r="25" fill="#004D40"/>
+    <!-- ondas -->
+    <path d="M244 636 Q326 594 408 636 T572 636 T736 636" fill="none"
+          stroke="#FFFFFF" stroke-width="32" stroke-linecap="round"/>
+    <path d="M300 700 Q368 664 436 700 T572 700 T690 700" fill="none"
+          stroke="#FFFFFF" stroke-width="26" stroke-linecap="round" opacity="0.72"/>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+[00:01-00:10] Ouca, se eu te falar pra escrever, eu sou ruim pra escrever esse trem aqui.
+[00:10-00:21] Deixa eu te falar, eu tô precisando fazer uma pp, e aí eu vim falar aqui, vendo aqui, né, na internet, que agora que esse tal guiar,
+[00:21-00:32] disse que é fácil, fazer pp, eu não acredito muito nesse trem não, mas disse que é fácil.
+[00:32-00:39] E os caras mostram exemplo aqui, mas tudo bem. Mas eu acredito que veio facilitar pra caramba, né,
+[00:39-00:47] com a IAA veio facilitar pra caramba. Então eu quero fazer uma pp pra controle de criação de peixe, né,
+[00:47-00:53] que eu me meti nisso aqui, eu vou criar peixe aqui, e essa porcaria de criação de peixe,
+[00:53-01:00] rapaz, você tem que tá medindo as coisas lá o tempo todo, sabe, a água, né,
+[01:00-01:09] você tem que tá medindo vários parâmetros da água, né, porque se não o peixe morre, o peixe não cresce,
+[01:09-01:16] então você tem que tá monitorando, sabe, monitorando o ambiente do peixe.
+[01:16-01:24] Então são vários parâmetros que a gente chama, o pessoal chama de parâmetro, né, de dados, né, dados.
+[01:24-01:30] Então você pode coletar diariamente, você pode coletar semanalmente, você pode coletar mensalmente,
+[01:30-01:36] mas não importa, você vai coletar o dado, né, o candidado lá.
+[01:36-01:45] Mais ou menos uns 10, 15 dados que você tem que coletar e armazenar, porque você tem que criar um histórico, né.
+[01:45-01:48] Então quando você fala em armazenar, nós estamos falando em banco de dados, né,
+[01:48-01:53] então eu preciso de uma pp que tenha banco de dados, que é para armazenar dados
+[01:53-01:57] e depois trabalhar esses dados para gerar informação.
+[01:57-02:00] Então como você é programador, você sabe o que eu tô falando.
+[02:00-02:07] Então eu preciso desenvolver uma pp que não é tão complexo assim,
+[02:07-02:10] acho que no princípio não é tão complexo,
+[02:10-02:18] quando a gente pensava que a gente programava em DBX4, em outras linguagens, né, em C,
+[02:19-02:26] é que eu já meti nesse troço, já andei trabalhando nesse troço quando era mais novo, uns 30 anos atrás.
+[02:26-02:32] Mas assim, você está mexendo com isso, sabe quem sabe fazer isso,
+[02:32-02:36] porque hoje acho que eu não tenho cabeça mais para fazer isso aí não.
+[02:36-02:43] E essa ppzinha, a ideia era para usar, né,
+[02:44-02:49] aqui na chácara, na minha criação, e a hora que ele estiver redondinho,
+[02:49-03:01] a gente disponibiliza ele para a locação, né, porque já tem alguns app para a locação, sabe.
+[03:01-03:06] Então eu estava pensando, ó, mas esse cara já fez para a locação,
+[03:06-03:10] eu também posso fazer um para mim usar, e o deles também ainda tem,
+[03:10-03:12] eu estava testando os dois aqui,
+[03:13-03:21] eles estão fracos porque eu quero, né, pode melhorar o que eles têm lá.
+[03:21-03:28] Então, eu faria um para mim, eu use, e depois poderia disponibilizar para alugar, né,
+[03:28-03:31] e aí um dinheirinho que ia entrar todo mês, né,
+[03:31-03:34] aí arrumar um parceiro para fazer junto,
+[03:34-03:38] eu tenho os dados, né, o que que precisa fazer,
+[03:38-03:41] o que que precisa armazenar, o que que precisa recuperar,
+[03:41-03:44] que informação vai ter que ser gerada,
+[03:44-03:49] e a pessoa só desenvolva o bicho, e a gente ganha dinheiro junto.
