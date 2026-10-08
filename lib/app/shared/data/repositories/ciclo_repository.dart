@@ -40,7 +40,9 @@ class CicloRepository {
     required String especie,
     required DateTime dataPovoamento,
     required int qtdInicial,
+    double? pesoInicialG,
     String? origemAlevinos,
+    bool vacinado = false,
   }) async {
     final now = DateTime.now();
     final ciclo = Ciclo(
@@ -49,7 +51,9 @@ class CicloRepository {
       especie: especie,
       dataPovoamento: dataPovoamento,
       qtdInicial: qtdInicial,
+      pesoInicialG: pesoInicialG,
       origemAlevinos: origemAlevinos,
+      vacinado: vacinado,
       status: StatusCiclo.ativo,
       createdAt: now,
       updatedAt: now,

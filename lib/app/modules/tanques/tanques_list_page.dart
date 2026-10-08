@@ -150,6 +150,11 @@ class _TanqueTile extends StatelessWidget {
 
   String _subtitulo(Tanque t) {
     final partes = <String>[t.tipo.label];
+    if (t.material != null) partes.add(t.material!.label);
+    // Convencional é o padrão; só vale destacar quando é bioflocos.
+    if (t.sistemaCultivo == SistemaCultivo.bioflocos) {
+      partes.add(t.sistemaCultivo.label);
+    }
     if (t.volumeM3 != null) partes.add('${_num(t.volumeM3!)} m³');
     if (t.areaM2 != null) partes.add('${_num(t.areaM2!)} m²');
     return partes.join(' · ');

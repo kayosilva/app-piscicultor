@@ -86,8 +86,10 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
     inconsistências e perguntas novas. Ver `NOTAS-TECNICAS.md` §11.
 13. [x] **Repositório git** criado (2026-10-07) — privado em `github.com/kayosilva/app-piscicultor`,
     remoto via alias SSH `github-pessoal` (chave pessoal) e autor com o e-mail pessoal.
-14. [ ] **Ajustes em Tanque e Ciclo** vindos da planilha (altura, material, tipo "suspenso", peso
-    inicial, vacina, fornecedor do alevino) → bump de `_version` + migração.
+14. [x] **Ajustes em Tanque e Ciclo** (2026-10-07) — schema v2 com migração: tanque ganhou tipo
+    "suspenso", altura, material e **sistema de cultivo** (convencional/bioflocos); ciclo ganhou
+    peso médio inicial e vacinado (o fornecedor reaproveita `origem_alevinos`). Volume sugerido
+    por área × altura. Migração v1→v2 validada no emulador com dados existentes.
 15. [ ] **Medição de água** (catálogo de parâmetros + leituras em formato longo) + faixas de
     referência para tilápia (pesquisa) + alertas + gráfico de linha.
 
@@ -111,8 +113,8 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
     (nome exibido no header do menu); carregada no `main`.
   - Rota inicial agora é `/dashboard` (Painel); `/tanques` continua para gestão/CRUD. Navegação
     pelo drawer: Painel · Tanques · Propriedade · Configurações.
-- Próximo no código: **ajustes em Tanque e Ciclo** (passo 14) e, em seguida, a **Medição de água**
-  (passo 15). Ordem completa do MVP em `NOTAS-TECNICAS.md` §5.
+- Próximo no código: **Medição de água** (passo 15). Ordem completa do MVP em
+  `NOTAS-TECNICAS.md` §5.
 
 ## Arquivos deste projeto
 

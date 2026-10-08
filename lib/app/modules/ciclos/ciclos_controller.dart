@@ -44,7 +44,9 @@ class CiclosController extends GetxController {
     required String especie,
     required DateTime dataPovoamento,
     required int qtdInicial,
+    double? pesoInicialG,
     String? origemAlevinos,
+    required bool vacinado,
   }) async {
     if (existente == null) {
       // Só um ciclo ativo por tanque: encerre o atual antes de povoar de novo.
@@ -57,7 +59,9 @@ class CiclosController extends GetxController {
         especie: especie,
         dataPovoamento: dataPovoamento,
         qtdInicial: qtdInicial,
+        pesoInicialG: pesoInicialG,
         origemAlevinos: origemAlevinos,
+        vacinado: vacinado,
       );
     } else {
       // Construção explícita preservando status/despesca (a edição não mexe
@@ -69,7 +73,9 @@ class CiclosController extends GetxController {
           especie: especie,
           dataPovoamento: dataPovoamento,
           qtdInicial: qtdInicial,
+          pesoInicialG: pesoInicialG,
           origemAlevinos: origemAlevinos,
+          vacinado: vacinado,
           status: existente.status,
           dataDespesca: existente.dataDespesca,
           createdAt: existente.createdAt,

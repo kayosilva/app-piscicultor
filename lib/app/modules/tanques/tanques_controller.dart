@@ -39,6 +39,9 @@ class TanquesController extends GetxController {
     required TipoTanque tipo,
     double? volumeM3,
     double? areaM2,
+    double? alturaM,
+    MaterialTanque? material,
+    required SistemaCultivo sistemaCultivo,
   }) async {
     final prop = propriedade.value;
     if (prop == null) return;
@@ -50,6 +53,9 @@ class TanquesController extends GetxController {
         tipo: tipo,
         volumeM3: volumeM3,
         areaM2: areaM2,
+        alturaM: alturaM,
+        material: material,
+        sistemaCultivo: sistemaCultivo,
       );
     } else {
       // Construção explícita (em vez de copyWith) para que limpar um campo na
@@ -62,6 +68,9 @@ class TanquesController extends GetxController {
           tipo: tipo,
           volumeM3: volumeM3,
           areaM2: areaM2,
+          alturaM: alturaM,
+          material: material,
+          sistemaCultivo: sistemaCultivo,
           createdAt: existente.createdAt,
           updatedAt: existente.updatedAt,
           deletedAt: existente.deletedAt,

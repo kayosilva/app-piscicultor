@@ -23,7 +23,9 @@ class Ciclo {
     required this.especie,
     required this.dataPovoamento,
     required this.qtdInicial,
+    this.pesoInicialG,
     this.origemAlevinos,
+    this.vacinado = false,
     required this.status,
     this.dataDespesca,
     required this.createdAt,
@@ -36,7 +38,14 @@ class Ciclo {
   final String especie;
   final DateTime dataPovoamento;
   final int qtdInicial;
+
+  /// Peso médio do alevino no povoamento, em gramas. Ponto de partida da curva
+  /// de crescimento.
+  final double? pesoInicialG;
+
+  /// Fornecedor/linhagem dos alevinos (texto livre por enquanto).
   final String? origemAlevinos;
+  final bool vacinado;
   final StatusCiclo status;
   final DateTime? dataDespesca;
   final DateTime createdAt;
@@ -49,7 +58,10 @@ class Ciclo {
         especie: map['especie'] as String,
         dataPovoamento: DateTime.parse(map['data_povoamento'] as String),
         qtdInicial: map['qtd_inicial'] as int,
+        pesoInicialG: (map['peso_inicial_g'] as num?)?.toDouble(),
         origemAlevinos: map['origem_alevinos'] as String?,
+        // SQLite não tem boolean: grava 0/1.
+        vacinado: (map['vacinado'] as int? ?? 0) == 1,
         status: StatusCiclo.fromName(map['status'] as String?),
         dataDespesca: map['data_despesca'] == null
             ? null
@@ -67,7 +79,9 @@ class Ciclo {
         'especie': especie,
         'data_povoamento': dataPovoamento.toIso8601String(),
         'qtd_inicial': qtdInicial,
+        'peso_inicial_g': pesoInicialG,
         'origem_alevinos': origemAlevinos,
+        'vacinado': vacinado ? 1 : 0,
         'status': status.name,
         'data_despesca': dataDespesca?.toIso8601String(),
         'created_at': createdAt.toIso8601String(),

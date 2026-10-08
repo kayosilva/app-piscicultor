@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../../shared/data/models/ciclo.dart';
+import '../../shared/utils/decimal_input.dart';
 import 'ciclos_controller.dart';
 
 final _fmtData = DateFormat('dd/MM/yyyy');
@@ -23,13 +24,20 @@ class _CicloFormPageState extends State<CicloFormPage> {
   final _formKey = GlobalKey<FormState>();
 
   late final Ciclo? _editando = Get.arguments as Ciclo?;
-  late final _especieCtrl =
-      TextEditingController(text: _editando?.especie ?? '');
+  late final _especieCtrl = TextEditingController(
+    text: _editando?.especie ?? '',
+  );
   late final _qtdCtrl = TextEditingController(
-      text: _editando == null ? '' : '${_editando.qtdInicial}');
-  late final _origemCtrl =
-      TextEditingController(text: _editando?.origemAlevinos ?? '');
+    text: _editando == null ? '' : '${_editando.qtdInicial}',
+  );
+  late final _pesoCtrl = TextEditingController(
+    text: formatDecimal(_editando?.pesoInicialG),
+  );
+  late final _origemCtrl = TextEditingController(
+    text: _editando?.origemAlevinos ?? '',
+  );
   late DateTime _dataPovoamento = _editando?.dataPovoamento ?? DateTime.now();
+  late bool _vacinado = _editando?.vacinado ?? false;
 
   bool _salvando = false;
 
@@ -37,6 +45,7 @@ class _CicloFormPageState extends State<CicloFormPage> {
   void dispose() {
     _especieCtrl.dispose();
     _qtdCtrl.dispose();
+    _pesoCtrl.dispose();
     _origemCtrl.dispose();
     super.dispose();
   }
@@ -67,8 +76,9 @@ class _CicloFormPageState extends State<CicloFormPage> {
             // Campo de data: só leitura, abre o date picker ao tocar.
             TextFormField(
               readOnly: true,
-              controller:
-                  TextEditingController(text: _fmtData.format(_dataPovoamento)),
+              controller: TextEditingController(
+                text: _fmtData.format(_dataPovoamento),
+              ),
               decoration: const InputDecoration(
                 labelText: 'Data do povoamento *',
                 border: OutlineInputBorder(),
@@ -89,13 +99,33 @@ class _CicloFormPageState extends State<CicloFormPage> {
             ),
             const SizedBox(height: 16),
             TextFormField(
+              controller: _pesoCtrl,
+              keyboardType: const TextInputType.numberWithOptions(
+                decimal: true,
+              ),
+              decoration: const InputDecoration(
+                labelText: 'Peso médio do alevino (g)',
+                hintText: 'Ex.: 2',
+                border: OutlineInputBorder(),
+              ),
+              validator: _validarPeso,
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
               controller: _origemCtrl,
               textCapitalization: TextCapitalization.sentences,
               decoration: const InputDecoration(
-                labelText: 'Origem dos alevinos',
+                labelText: 'Fornecedor / linhagem dos alevinos',
                 hintText: 'Ex.: Fornecedor X',
                 border: OutlineInputBorder(),
               ),
+            ),
+            const SizedBox(height: 8),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: const Text('Alevinos vacinados'),
+              value: _vacinado,
+              onChanged: (v) => setState(() => _vacinado = v),
             ),
             const SizedBox(height: 24),
             FilledButton.icon(
@@ -130,15 +160,20 @@ class _CicloFormPageState extends State<CicloFormPage> {
       especie: _especieCtrl.text.trim(),
       dataPovoamento: _dataPovoamento,
       qtdInicial: int.parse(_qtdCtrl.text.trim()),
+      pesoInicialG: parseDecimal(_pesoCtrl.text),
       origemAlevinos: origem.isEmpty ? null : origem,
+      vacinado: _vacinado,
     );
 
     if (!mounted) return;
     setState(() => _salvando = false);
 
     if (erro != null) {
-      Get.snackbar('Não foi possível salvar', erro,
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Não foi possível salvar',
+        erro,
+        snackPosition: SnackPosition.BOTTOM,
+      );
       return;
     }
     Get.back();
@@ -153,6 +188,14 @@ class _CicloFormPageState extends State<CicloFormPage> {
     if (v == null || v.trim().isEmpty) return 'Informe a quantidade';
     final n = int.tryParse(v.trim());
     if (n == null) return 'Use apenas números inteiros';
+    if (n <= 0) return 'Deve ser maior que zero';
+    return null;
+  }
+
+  String? _validarPeso(String? v) {
+    if (v == null || v.trim().isEmpty) return null; // opcional
+    final n = parseDecimal(v);
+    if (n == null) return 'Peso inválido';
     if (n <= 0) return 'Deve ser maior que zero';
     return null;
   }

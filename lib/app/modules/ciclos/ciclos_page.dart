@@ -7,6 +7,7 @@ import '../../shared/data/models/ciclo.dart';
 import 'ciclos_controller.dart';
 
 final _fmtData = DateFormat('dd/MM/yyyy');
+final _fmtNum = NumberFormat.decimalPattern('pt_BR');
 
 /// Lista os ciclos (lotes) de um tanque, com iniciar / editar / encerrar
 /// (despesca) / excluir. É aqui que o histórico da criação começa a se pendurar.
@@ -166,7 +167,7 @@ class _CicloTile extends StatelessWidget {
           ],
         ),
         subtitle: Text(_subtitulo()),
-        isThreeLine: ciclo.origemAlevinos != null,
+        isThreeLine: _temTerceiraLinha,
         trailing: PopupMenuButton<String>(
           onSelected: (v) {
             switch (v) {
@@ -190,18 +191,24 @@ class _CicloTile extends StatelessWidget {
     );
   }
 
+  bool get _temTerceiraLinha => ciclo.origemAlevinos != null || ciclo.vacinado;
+
   String _subtitulo() {
+    final peso = ciclo.pesoInicialG;
     final linhas = <String>[
       'Povoado em ${_fmtData.format(ciclo.dataPovoamento)} · '
-          '${ciclo.qtdInicial} peixes',
+          '${ciclo.qtdInicial} peixes'
+          '${peso == null ? '' : ' de ${_fmtNum.format(peso)} g'}',
       if (ciclo.status == StatusCiclo.encerrado && ciclo.dataDespesca != null)
         'Despesca em ${_fmtData.format(ciclo.dataDespesca!)}'
       else
         'Há ${_diasCorridos(ciclo.dataPovoamento)} dias',
     ];
-    if (ciclo.origemAlevinos != null) {
-      linhas.add('Origem: ${ciclo.origemAlevinos}');
-    }
+    final origem = [
+      if (ciclo.origemAlevinos != null) 'Origem: ${ciclo.origemAlevinos}',
+      if (ciclo.vacinado) 'Vacinados',
+    ];
+    if (origem.isNotEmpty) linhas.add(origem.join(' · '));
     return linhas.join('\n');
   }
 }

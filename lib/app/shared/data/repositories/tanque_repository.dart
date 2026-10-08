@@ -29,6 +29,9 @@ class TanqueRepository {
     required TipoTanque tipo,
     double? volumeM3,
     double? areaM2,
+    double? alturaM,
+    MaterialTanque? material,
+    SistemaCultivo sistemaCultivo = SistemaCultivo.convencional,
   }) async {
     final now = DateTime.now();
     final tanque = Tanque(
@@ -38,6 +41,9 @@ class TanqueRepository {
       tipo: tipo,
       volumeM3: volumeM3,
       areaM2: areaM2,
+      alturaM: alturaM,
+      material: material,
+      sistemaCultivo: sistemaCultivo,
       createdAt: now,
       updatedAt: now,
     );

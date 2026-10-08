@@ -20,7 +20,8 @@ ajudando o produtor a não perder um tanque inteiro por um parâmetro fora da fa
 - [x] **CRUD de Tanques** e **CRUD de Ciclos** (um ciclo ativo por tanque; encerrar = despesca).
 - [x] Edição da **Propriedade**, identidade visual (ícone e splash) e localização pt-BR.
 - [x] Planilha do produtor analisada → modelo-alvo e ordem do MVP (`docs/NOTAS-TECNICAS.md` §5 e §11).
-- [ ] Ajustes em Tanque e Ciclo vindos da planilha (altura, material, peso inicial, vacina...).
+- [x] Campos da planilha em Tanque e Ciclo (altura, material, sistema de cultivo, peso inicial,
+      vacina) — schema v2 com migração.
 - [ ] Medição de água + faixas ideais + alertas + gráfico de linha.
 - [ ] Biometria, despesca, arraçoamento/estoque, clima automático, relatórios e gráficos.
 - [ ] Sync com nuvem / multi-tenant (Fase 2 — SaaS).
@@ -69,6 +70,7 @@ lib/
         repositories/               # um por entidade (CRUD + soft-delete)
       services/settings_service.dart# preferências via Hive (GetxService)
       theme/                        # cores de marca + tema Material 3
+      utils/decimal_input.dart      # números decimais nos formulários (vírgula pt-BR)
       widgets/app_drawer.dart       # navegação principal
 ```
 

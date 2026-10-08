@@ -50,13 +50,22 @@ Peça-chave: **tanque ≠ ciclo**.
   e povoar de novo, é **outro ciclo** no mesmo tanque.
 - Todo o histórico pendura no **ciclo**, não no tanque.
 
-**Implementado hoje** (2026-09-30):
+**Implementado hoje** (schema **v2**, 2026-10-07):
 
 ```
 Propriedade (nome, localizacao)
- └─ Tanque (nome, tipo: escavado / tanque-rede / alvenaria / outro; volume_m3, area_m2)
-     └─ Ciclo (especie, data_povoamento, qtd_inicial, origem_alevinos, status, data_despesca)
+ └─ Tanque (nome, tipo: escavado / tanque-rede / suspenso / alvenaria / outro; volume_m3,
+ │          area_m2, altura_m, material?, sistema_cultivo: convencional / bioflocos)
+     └─ Ciclo (especie, data_povoamento, qtd_inicial, peso_inicial_g?, origem_alevinos
+               [= fornecedor/linhagem], vacinado, status, data_despesca)
 ```
+
+- **v1 → v2** só com `ALTER TABLE ... ADD COLUMN` (nulos ou com default): dados antigos ficam
+  intactos. Migração validada no emulador sobre um banco v1 com dados reais.
+- No formulário do tanque, o **volume é sugerido** como área × altura e continua editável
+  (tanque circular, talude etc.).
+- Números decimais nos formulários usam o helper `shared/utils/decimal_input.dart` (aceita
+  vírgula ou ponto; exibe com vírgula).
 
 **Modelo-alvo** (revisado em 2026-10-07 a partir da planilha do Ananias — detalhes e lacunas em
 §11; decidido por nós, já que o Ananias não registra nada hoje — ver `PERGUNTAS-ANANIAS.md`):
