@@ -353,12 +353,17 @@ editáveis no app. Para ele só vão duas perguntas: bioflocos e kit de mediçã
   deles, o universal (versionCode 1) é recusado como *downgrade*.
 - **Versão:** a cada entrega, **subir o `version` do `pubspec.yaml`** (o número após o `+` é o
   `versionCode`; precisa sempre crescer), senão o Android não instala por cima.
-- **Assinatura:** hoje o release é assinado com a **chave de debug** desta máquina
-  (`~/.android/debug.keystore`). Atualizações só instalam por cima se vierem **da mesma chave**;
-  se ela se perder (ex.: formatar a máquina, como em 2026-09-30), o app teria que ser
-  desinstalado — **apagando os dados do produtor**. Antes de ele começar a lançar dados reais:
-  criar uma keystore de release (fora do git) **com backup**, ou no mínimo guardar uma cópia da
-  `debug.keystore`.
+- **Assinatura (desde 2026-10-07):** o release é assinado com a **chave de release** do projeto:
+  keystore em `~/.android/piscicultor-release.jks` (alias `piscicultor`, RSA 4096, validade
+  10.000 dias) e senhas em `android/key.properties` — **ambos fora do git**. O
+  `android/app/build.gradle.kts` lê o `key.properties`; sem ele (outra máquina), cai na chave de
+  debug com aviso no build — **esse APK não pode ir para o produtor**.
+  ⚠️ Atualizações só instalam por cima se vierem **da mesma chave**. Perder a keystore ou a senha =
+  produtor precisa desinstalar = **perde os dados**. Manter **backup do `.jks` e da senha** fora
+  desta máquina (gerenciador de senhas + cópia do arquivo).
+  Certificado: `CN=Piscicultor, O=Kayo Silva`, SHA-256
+  `00ec1792241e2ce65ed2a6de4881809364e44825aae6ddc04911cc87c7d1e2c4`. Conferir um APK com
+  `~/Android/Sdk/build-tools/36.0.0/apksigner verify --print-certs <apk>`.
 - **`applicationId`** (`br.com.piscicultor`) também não pode mudar depois que ele usar: mudar o
   id = outro app, sem os dados.
 - Testar release no emulador: `run-as` não funciona em build de release (não é *debuggable*);
