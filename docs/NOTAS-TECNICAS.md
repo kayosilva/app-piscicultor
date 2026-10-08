@@ -58,7 +58,7 @@ Propriedade (nome, localizacao)
 ```
 
 **Modelo-alvo** (revisado em 2026-10-07 a partir da planilha do Ananias — detalhes e lacunas em
-§11; os pontos marcados com `?` dependem das perguntas 19–28 de `PERGUNTAS-ANANIAS.md`):
+§11; os pontos marcados com `?` dependem das perguntas 21, 25–27 de `PERGUNTAS-ANANIAS.md`):
 
 ```
 Propriedade (+ latitude/longitude — necessárias p/ o clima automático)
@@ -66,9 +66,9 @@ Propriedade (+ latitude/longitude — necessárias p/ o clima automático)
  │   └─ Ciclo = "Povoamento" na planilha
  │       (especie, data_povoamento, qtd_inicial, + peso_inicial_g, + fornecedor/marca do alevino,
  │        + vacinado, status, data_encerramento)
- │       ├─ Medicao (data/hora) ── MedicaoValor (parametro, valor)      ? por tanque ou geral (P19)
+ │       ├─ Medicao (data/hora) ── MedicaoValor (parametro, valor)      por tanque (via ciclo)
  │       ├─ Biometria (data, amostra, peso total, média, esperado*, nota, motivo, observação)
- │       ├─ Arracoamento (data, ração, vezes/dia, kg)                   → baixa no estoque
+ │       ├─ Arracoamento (data, ração, vezes/dia, kg por trato, total*)  → baixa no estoque
  │       ├─ Despesca (data, qtd, peso total, média*, cliente)            ? parcial / várias (P21)
  │       └─ Mortalidade (data, qtd)                                     ? não está na planilha (P26)
  ├─ ClimaDiario (data, temp. ambiente, umidade, vento, pressão, chuva, estação) — *automático*
@@ -269,7 +269,7 @@ App corporativo grande (30+ módulos) — **adotar apenas o essencial, em versã
 | `Marcas` | catálogo `marca` | TilaMax, Jkw, Acqua, Guabi (marcas de ração). |
 | `Pessoas` | `pessoa` | Cliente/Fornecedor, celular, CPF/CNPJ. |
 | `Paramentros` | catálogo `parametro` | Ver lista abaixo. Coluna "Valor" (faixa) **vazia**. |
-| `Medicao` / `Med` | `medicao` + `medicao_valor` | Duas versões do mesmo dado: `Medicao` em colunas (1 linha por leitura) e `Med` em linhas (1 linha por parâmetro). **Nenhuma das duas tem coluna de tanque.** |
+| `Medicao` / `Med` | `medicao` + `medicao_valor` | Duas versões do mesmo dado: `Medicao` em colunas (1 linha por leitura) e `Med` em linhas (1 linha por parâmetro). Não têm coluna de tanque, mas a medição é **por tanque** (decidido). |
 | `Equipamentos` | catálogo `equipamento` | Soprador, aerador, difusor, comedouro, bomba. Uso ainda indefinido. |
 | `Tab_Racao` | referência | Vazia: "quantidade de ração de 1 g até 1 kg — dados na internet em PDF". |
 | `Tab_Cresci` | referência | Vazia: "escala de desenvolvimento em dias e peso da tilápia de 1 g a 1.000 g — PDF na internet". |
@@ -299,13 +299,22 @@ App corporativo grande (30+ módulos) — **adotar apenas o essencial, em versã
   fontes públicas citadas (Embrapa, fabricantes de ração). São elas que geram o "esperado" da
   biometria e a sugestão de ração do dia — a "inteligência do sistema" que ele mencionou.
 
-### Inconsistências nos dados de exemplo (não modelar em cima delas)
-- `Paramentros`: as descrições de **T_Agua** ("temperatura do ambiente", valor "internet") e
-  **T_Ambi** ("temperatura da água") parecem **trocadas**.
-- `Arracoamento`: 4 vezes × 5 kg = 20 kg, mas o total diz 25; o consumo acumulado salta de 50 para
-  125; o estoque parte de **8.000 kg fixos**, enquanto a compra registrada é de 100 sacos × 25 kg
-  = 2.500 kg.
-- `Compras`: "Valor" 80.000 para 100 sacos — não dá para saber se é total ou unitário (nem a unidade).
-- `Med`/`Medicao`: não indicam **de qual tanque** é a leitura.
+### Inconsistências nos dados de exemplo → decisões nossas
+Os valores da planilha são **fictícios**, então contas que não batem não são requisito. Onde o
+dado de exemplo deixava dúvida, decidimos (2026-10-07):
 
-Tudo isso virou pergunta em `PERGUNTAS-ANANIAS.md` (19–28).
+- **Medição é por tanque**, ligada ao ciclo ativo (a planilha só omitiu a coluna).
+- **T_Agua × T_Ambi:** as descrições em `Paramentros` estão trocadas por erro de digitação.
+  Temperatura da água é medida; temperatura ambiente vem da internet.
+- **Arraçoamento:** `Quant(kg)` é por trato e o total do dia = vezes × quant (calculado). O consumo
+  acumulado e o estoque são calculados a partir das compras, nunca digitados (o "8.000 kg" é
+  fictício). O alerta verde/amarelo/vermelho é do **estoque**, com limites **configuráveis**.
+- **Compras:** gravar quantidade + **valor total**; o preço unitário é calculado. Estoque por item
+  (tipo + marca + especificação).
+- **Povoamento:** "marca" = fornecedor/linhagem do alevino; "vacina" = sim/não.
+- **Biometria:** "nota" = avaliação do lote (o app pode sugerir pela média × esperado); "fato" =
+  motivo da pesagem.
+
+Seguem com o Ananias só as dúvidas de prática: despesca parcial, mortalidade, equipamentos e
+fontes das tabelas (`PERGUNTAS-ANANIAS.md` 21, 25–27). As faixas ideais (9) serão pesquisadas por
+nós e enviadas para ele conferir.

@@ -48,11 +48,12 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
 3. [~] **Enviar perguntas ao Sr. Ananias** para levantar requisitos reais
    → ver `PERGUNTAS-ANANIAS.md`. (pergunta 1 respondida em 30/09/2026; planilha recebida e
    consolidada em 07/10/2026, respondendo total ou parcialmente as perguntas 3–7, 12–14 e 17)
-   - **Pendente:** enviar as **perguntas novas 19–28**, que surgiram da planilha, e a **9**
-     (faixas ideais), que continua sem resposta.
+   - **Pendente:** enviar a **Mensagem 2** (perguntas 21, 25–27). As demais dúvidas da planilha
+     foram deduzidas por nós (valores fictícios). Faixas ideais (9): pesquisar e mandar para ele
+     conferir.
 4. [~] Consolidar respostas → modelagem de dados definitiva + escopo do MVP.
    - Modelo-alvo e nova ordem do MVP propostos em `NOTAS-TECNICAS.md` §3, §5 e §11 (2026-10-07).
-     Os pontos que dependem das perguntas 19–28 estão marcados com `?`.
+     Os pontos que dependem das perguntas 21, 25–27 estão marcados com `?`.
 5. [ ] (Opcional) Pesquisa de domínio: faixas ideais por espécie, com fontes.
 6. [x] Esqueleto do projeto Flutter criado em **`~/dev/piscicultor`** (2026-09-30) — GetX,
    estrutura feature-first, tema, build validada no emulador. Ambiente reinstalado
