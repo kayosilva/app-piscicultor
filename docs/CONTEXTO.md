@@ -48,15 +48,17 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
 3. [~] **Enviar perguntas ao Sr. Ananias** para levantar requisitos reais
    → ver `PERGUNTAS-ANANIAS.md`. (pergunta 1 respondida em 30/09/2026; planilha recebida e
    consolidada em 07/10/2026, respondendo total ou parcialmente as perguntas 3–7, 12–14 e 17)
-   - **Pendente:** enviar a **Mensagem 2** (perguntas 21, 25–27). As demais dúvidas da planilha
-     foram deduzidas por nós (valores fictícios). Faixas ideais (9): pesquisar e mandar para ele
-     conferir.
+   - **Importante:** ele **não registra nada hoje**; a planilha é só ilustrativa. Requisitos são
+     decididos por nós, com padrões configuráveis no app.
+   - **Pendente:** enviar a **Mensagem 2** (só bioflocos e kit de medição).
 4. [~] Consolidar respostas → modelagem de dados definitiva + escopo do MVP.
    - Modelo-alvo e nova ordem do MVP propostos em `NOTAS-TECNICAS.md` §3, §5 e §11 (2026-10-07).
      Os pontos que dependem das perguntas 21, 25–27 estão marcados com `?`.
 5. [x] Pesquisa de domínio: **faixas ideais da tilápia**, com fontes (2026-10-07) →
-   `FAIXAS-IDEAIS-TILAPIA.md`. Falta o Ananias conferir (mensagem pronta no próprio doc), e
-   confirmar se o sistema é de **bioflocos** (pergunta 29).
+   `FAIXAS-IDEAIS-TILAPIA.md`. Entram como padrão editável no app. Falta só saber se o sistema
+   é de **bioflocos** (pergunta 29, na Mensagem 2).
+   - [ ] Pesquisar também a **tabela de crescimento** e a **tabela de arraçoamento** da tilápia
+     (substituem as abas vazias `Tab_Cresci` e `Tab_Racao` da planilha).
 6. [x] Esqueleto do projeto Flutter criado em **`~/dev/piscicultor`** (2026-09-30) — GetX,
    estrutura feature-first, tema, build validada no emulador. Ambiente reinstalado
    (ver `NOTAS-TECNICAS.md` §8).

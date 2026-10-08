@@ -3,6 +3,11 @@
 > Roteiro para levantar os requisitos reais do app de piscicultura.
 > Enviar por WhatsApp — ele pode responder por áudio, do jeito que for mais fácil.
 > Marque `[x]` conforme for obtendo as respostas e anote-as abaixo de cada pergunta.
+>
+> ⚠️ **Contexto (07/10/2026):** o Sr. Ananias **não registra nada hoje** — a planilha foi só um
+> exemplo de como ele imagina o app. Perguntas sobre "como o senhor anota/faz" não têm resposta
+> pronta. Regra: **decidimos nós** (com pesquisa e padrões configuráveis no app) e perguntamos a
+> ele só o que depende da estrutura física dele. A mensagem válida é a **Mensagem 2** abaixo.
 
 ---
 
@@ -48,12 +53,9 @@ Sr. Ananias, pra eu montar esse app do jeito certo, me ajuda respondendo essas p
   - _Resposta:_
 - [ ] **9.** Pra cada medida dessas, o senhor sabe qual é o valor "bom" e a partir de qual valor já é
   problema? _(pergunta mais importante — alimenta os alertas do app)_
-  - _Ainda em aberto:_ a aba `Paramentros` tem a coluna "Valor", mas está **vazia**. Decisão
-    (07/10/2026): **nós levantamos** as faixas de referência da tilápia em pesquisa (com fontes) e
-    mandamos depois para ele **só conferir**. Não entra na Mensagem 2.
-  - _Pesquisa feita (07/10/2026):_ faixas ideal/atenção/crítico com fontes (Embrapa, SRAC,
-    Kubitza) em **`FAIXAS-IDEAIS-TILAPIA.md`**, que já traz a mensagem de conferência pronta.
-    Falta ele validar.
+  - [x] _Decidido por nós (07/10/2026):_ faixas ideal/atenção/crítico pesquisadas com fontes
+    (Embrapa, SRAC, Kubitza) em **`FAIXAS-IDEAIS-TILAPIA.md`**. Entram como **padrão editável**
+    no app; não dependem de validação dele.
 
 ### Sobre o que fazer quando dá ruim
 - [ ] **10.** Quando alguma medida sai do normal, o que o senhor faz? (troca água, liga aerador,
@@ -107,7 +109,8 @@ Sr. Ananias, pra eu montar esse app do jeito certo, me ajuda respondendo essas p
 - [ ] **21.** Na despesca de exemplo saíram 100 peixes de um lote de 3.000. O senhor costuma
   **tirar aos poucos** (várias despescas no mesmo lote) ou tira tudo de uma vez? Quando considera
   que o lote terminou?
-  - _Resposta:_
+  - [x] _Decidido por nós (07/10/2026), ele não registra nada hoje:_ o app aceita **várias despescas por ciclo**; a marcada como **final** encerra o
+    ciclo. Cobre os dois jeitos.
 - [ ] **22.** No arraçoamento, a quantidade (kg) é **por trato** ou o **total do dia**? E o alerta
   verde/amarelo/vermelho é do **estoque de ração**? A partir de quanto muda de cor?
   - [x] _Deduzido por nós (07/10/2026), a planilha tem valores fictícios:_ `Quant(kg)` é **por trato** e o total do dia = vezes × quant (calculado). O alerta é
@@ -121,52 +124,46 @@ Sr. Ananias, pra eu montar esse app do jeito certo, me ajuda respondendo essas p
   - [x] _Deduzido por nós (07/10/2026), a planilha tem valores fictícios:_ marca = **fornecedor/linhagem do alevino**; vacina = **sim/não**.
 - [ ] **25.** O senhor já tem os **PDFs** da tabela de ração e da tabela de crescimento da
   tilápia? Se tiver, manda pra mim (de qual fabricante/fonte?).
-  - _Resposta:_
+  - [x] _Decidido por nós (07/10/2026), ele não registra nada hoje:_ **nós pesquisamos** as tabelas de crescimento e de arraçoamento da tilápia (Embrapa,
+    fabricantes de ração).
 - [ ] **26.** O senhor anota os **peixes que morrem**? (A planilha não tem mortalidade, mas ela é
   importante para calcular biomassa e conversão alimentar.)
-  - _Resposta:_
+  - [x] _Decidido por nós (07/10/2026), ele não registra nada hoje:_ **mortalidade entra no app** como registro opcional por ciclo.
 - [ ] **27.** O que o senhor quer registrar dos **equipamentos** (soprador, aerador...): em qual
   tanque estão, manutenção, horas ligados?
-  - _Resposta:_
+  - [x] _Decidido por nós (07/10/2026), ele não registra nada hoje:_ **backlog**, depois do MVP.
 - [ ] **28.** Na biometria, o que significam a **"nota"** (Bom/Excelente/Ruim) e o **"fato"**
   (Rotina/Biometria/Outro)?
   - [x] _Deduzido por nós (07/10/2026), a planilha tem valores fictícios:_ **nota** = avaliação do lote (o app pode sugerir comparando média × esperado);
     **fato** = motivo da pesagem.
 - [ ] **29.** O senhor cria no sistema de **bioflocos**? (Tanque suspenso de geomembrana,
   medição de sólidos, KH alto e compra de bicarbonato/probiótico sugerem que sim. Muda as faixas
-  de alcalinidade, sólidos e transparência.) Vai na mensagem de `FAIXAS-IDEAIS-TILAPIA.md`.
+  de alcalinidade, sólidos e transparência.) Vai na **Mensagem 2**.
   - _Resposta:_
 
 ---
 
-## Mensagem 2 — dúvidas da planilha (preparada em 07/10/2026)
+## Mensagem 2 — o que só ele sabe (revisada em 07/10/2026)
 
-> Formatada para colar no WhatsApp (`*negrito*`). Só leva o que depende da prática dele
-> (perguntas 21, 25, 26 e 27). As demais dúvidas da planilha (19, 20, 22, 23, 24, 28) foram
-> deduzidas por nós, porque os valores da planilha são fictícios. A 9 (faixas) vai depois, como
-> tabela pesquisada para ele conferir.
+> Formatada para colar no WhatsApp (`*negrito*`). Substitui as versões anteriores: como ele não
+> registra nada hoje, todo o resto (perguntas 9 e 19–28) foi decidido por nós. Ficam só as
+> perguntas sobre a estrutura física dele: **29** (bioflocos) e **8** (como mede a água).
 
 ```
-Sr. Ananias, recebi a planilha e o áudio, muito obrigado! Ajudou demais, já deu pra entender quase tudo que o senhor quer guardar. 🐟
+Sr. Ananias, recebi a planilha e o áudio, muito obrigado! Já deu pra entender o que o senhor quer, e eu já comecei a montar. 🐟
 
-Ficaram só umas dúvidas de como o senhor trabalha no dia a dia. Pode responder por áudio:
+Só duas coisas que dependem de como é aí na chácara:
 
-1. Na *despesca*, o senhor costuma tirar o tanque *aos poucos*, em várias vendas, ou tira tudo de uma vez? Quando o senhor considera que aquele lote acabou?
-2. O senhor anota os *peixes que morrem*? Isso ajuda o app a calcular o peso total do tanque e o aproveitamento da ração.
-3. Dos *equipamentos* (soprador, aerador, bomba...), o que o senhor quer guardar? Em qual tanque estão, manutenção, horas ligados?
-4. O senhor já tem os *PDFs da tabela de ração e da tabela de crescimento da tilápia*? Se tiver, me manda, por favor (e de qual fabricante ou site são).
+1. Os tanques são no sistema de *bioflocos* (água marrom, sem trocar água) ou no sistema comum, com troca de água?
+2. O senhor já tem algum *kit ou aparelho pra medir a água* (pH, amônia, oxigênio)? Se tiver, me manda uma foto dele.
 
-Ah, e os valores bons e ruins de cada medida da água (pH, amônia, oxigênio...) eu vou pesquisar pra tilápia e mando pro senhor só conferir.
-
-Obrigado!
+O resto eu resolvo por aqui. Os valores bons e ruins de cada medida eu pesquisei pra tilápia (Embrapa), e no app o senhor vai poder ajustar se quiser.
 ```
 
 | Nº na mensagem | Pergunta no roteiro |
 | --- | --- |
-| 1 | 21 |
-| 2 | 26 |
-| 3 | 27 |
-| 4 | 25 |
+| 1 | 29 |
+| 2 | 8 (+ unidade do kit, ver `FAIXAS-IDEAIS-TILAPIA.md`) |
 
 ---
 

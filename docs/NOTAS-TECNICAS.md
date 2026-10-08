@@ -59,7 +59,7 @@ Propriedade (nome, localizacao)
 ```
 
 **Modelo-alvo** (revisado em 2026-10-07 a partir da planilha do Ananias — detalhes e lacunas em
-§11; os pontos marcados com `?` dependem das perguntas 21, 25–27 de `PERGUNTAS-ANANIAS.md`):
+§11; decidido por nós, já que o Ananias não registra nada hoje — ver `PERGUNTAS-ANANIAS.md`):
 
 ```
 Propriedade (+ latitude/longitude — necessárias p/ o clima automático)
@@ -70,8 +70,8 @@ Propriedade (+ latitude/longitude — necessárias p/ o clima automático)
  │       ├─ Medicao (data/hora) ── MedicaoValor (parametro, valor)      por tanque (via ciclo)
  │       ├─ Biometria (data, amostra, peso total, média, esperado*, nota, motivo, observação)
  │       ├─ Arracoamento (data, ração, vezes/dia, kg por trato, total*)  → baixa no estoque
- │       ├─ Despesca (data, qtd, peso total, média*, cliente)            ? parcial / várias (P21)
- │       └─ Mortalidade (data, qtd)                                     ? não está na planilha (P26)
+ │       ├─ Despesca (data, qtd, peso total, média*, cliente, final?)    várias por ciclo
+ │       └─ Mortalidade (data, qtd, causa)                              opcional
  ├─ ClimaDiario (data, temp. ambiente, umidade, vento, pressão, chuva, estação) — *automático*
  ├─ Insumo / Compra (tipo, marca, especificação, embalagem, qtd, valor) → Estoque
  └─ Pessoa (nome, tipo: cliente/fornecedor, celular, CPF/CNPJ)
@@ -271,7 +271,7 @@ App corporativo grande (30+ módulos) — **adotar apenas o essencial, em versã
 | `Pessoas` | `pessoa` | Cliente/Fornecedor, celular, CPF/CNPJ. |
 | `Paramentros` | catálogo `parametro` | Ver lista abaixo. Coluna "Valor" (faixa) **vazia**. |
 | `Medicao` / `Med` | `medicao` + `medicao_valor` | Duas versões do mesmo dado: `Medicao` em colunas (1 linha por leitura) e `Med` em linhas (1 linha por parâmetro). Não têm coluna de tanque, mas a medição é **por tanque** (decidido). |
-| `Equipamentos` | catálogo `equipamento` | Soprador, aerador, difusor, comedouro, bomba. Uso ainda indefinido. |
+| `Equipamentos` | catálogo `equipamento` | Soprador, aerador, difusor, comedouro, bomba. **Backlog** (pós-MVP). |
 | `Tab_Racao` | referência | Vazia: "quantidade de ração de 1 g até 1 kg — dados na internet em PDF". |
 | `Tab_Cresci` | referência | Vazia: "escala de desenvolvimento em dias e peso da tilápia de 1 g a 1.000 g — PDF na internet". |
 
@@ -322,6 +322,8 @@ dado de exemplo deixava dúvida, decidimos (2026-10-07):
 - **Biometria:** "nota" = avaliação do lote (o app pode sugerir pela média × esperado); "fato" =
   motivo da pesagem.
 
-Seguem com o Ananias só as dúvidas de prática: despesca parcial, mortalidade, equipamentos e
-fontes das tabelas (`PERGUNTAS-ANANIAS.md` 21, 25–27). As faixas ideais (9) serão pesquisadas por
-nós e enviadas para ele conferir.
+**Atualização (2026-10-07):** o Ananias **não registra nada hoje** — a planilha é só ilustrativa.
+Por isso também decidimos: despesca **várias por ciclo** (a final encerra o ciclo); **mortalidade**
+entra como registro opcional; **equipamentos** vão para o backlog; as **tabelas de crescimento e
+de ração** e as **faixas ideais** (`FAIXAS-IDEAIS-TILAPIA.md`) vêm de pesquisa nossa e ficam
+editáveis no app. Para ele só vão duas perguntas: bioflocos e kit de medição (Mensagem 2).

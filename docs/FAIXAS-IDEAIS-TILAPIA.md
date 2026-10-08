@@ -1,8 +1,8 @@
 # Faixas ideais da água — tilápia
 
 > Levantamento de referência (pesquisa em 2026-10-07) para alimentar os **alertas** do app
-> (pergunta 9 de `PERGUNTAS-ANANIAS.md`). **Ainda não validado pelo Sr. Ananias**: a proposta é
-> mandar a tabela da seção "Mensagem para conferência" para ele conferir.
+> (pergunta 9 de `PERGUNTAS-ANANIAS.md`). Como o Sr. Ananias não registra nada hoje, estes valores
+> entram como **padrão do app, editável pelo produtor**, sem depender de validação dele.
 >
 > Os três níveis viram o semáforo do app: **verde = ideal**, **amarelo = atenção**,
 > **vermelho = crítico**. Os limites foram tirados das fontes abaixo. Onde as fontes não definem
@@ -61,33 +61,8 @@
    - **alcalinidade** é mantida mais alta (num experimento da Embrapa com tilápia em bioflocos
      ficou em ~250 mg/L CaCO₃ [6]);
    - **transparência (Secchi)** perde o sentido, porque a água fica turva de propósito.
-   Isso é pergunta para ele (29 em `PERGUNTAS-ANANIAS.md`).
-
-## Mensagem para conferência (WhatsApp)
-
-> Enviar junto com (ou depois de) a Mensagem 2 de `PERGUNTAS-ANANIAS.md`.
-
-```
-Sr. Ananias, como combinado, pesquisei os valores da água pra tilápia (Embrapa e outras fontes). Dá uma conferida e me diz se bate com o que o senhor usa:
-
-🟢 bom · 🟡 atenção · 🔴 perigo
-
-*Temperatura da água:* 🟢 25 a 32 °C · 🟡 18 a 25 ou 32 a 35 · 🔴 abaixo de 18 ou acima de 35
-*Oxigênio (OD):* 🟢 acima de 5 · 🟡 3 a 5 · 🔴 abaixo de 3 mg/L
-*pH:* 🟢 6,5 a 8,5 · 🟡 6 a 6,5 ou 8,5 a 9 · 🔴 abaixo de 6 ou acima de 9
-*Alcalinidade (KH):* 🟢 60 a 150 · 🟡 20 a 60 · 🔴 abaixo de 20 mg/L
-*Dureza (GH):* 🟢 60 a 150 · 🟡 20 a 60 · 🔴 abaixo de 20 mg/L
-*Amônia total:* 🟢 abaixo de 0,5 · 🟡 0,5 a 2 · 🔴 acima de 2 mg/L
-*Nitrito:* 🟢 abaixo de 0,3 · 🟡 0,3 a 0,7 · 🔴 acima de 0,7 mg/L
-*Nitrato:* 🟢 até 25 · 🟡 25 a 100 · 🔴 acima de 100 mg/L
-*Transparência:* 🟢 30 a 50 cm · 🟡 20 a 30 ou acima de 50 · 🔴 abaixo de 20 cm
-
-O app também vai calcular sozinho a parte da amônia que é tóxica, usando o pH e a temperatura.
-
-Duas perguntinhas:
-1. O senhor cria no sistema de *bioflocos*? Se sim, os sólidos e a alcalinidade têm outra faixa.
-2. O seu kit de nitrito e nitrato mostra o resultado em "NO2/NO3" ou em "N-NO2/N-NO3"?
-```
+   Isso é pergunta para ele (29, na Mensagem 2 de `PERGUNTAS-ANANIAS.md`). A foto do kit (mesma
+   mensagem) resolve a dúvida da unidade de nitrito/nitrato.
 
 ## Fontes
 
