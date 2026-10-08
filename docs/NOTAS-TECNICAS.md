@@ -78,7 +78,7 @@ Propriedade (+ latitude/longitude — necessárias p/ o clima automático)
  │        + vacinado, status, data_encerramento)
  │       ├─ Medicao (data/hora) ── MedicaoValor (parametro, valor)      por tanque (via ciclo)
  │       ├─ Biometria (data, amostra, peso total, média, esperado*, nota, motivo, observação)
- │       ├─ Arracoamento (data, ração, vezes/dia, kg por trato, total*)  → baixa no estoque
+ │       ├─ Arracoamento (data/hora do trato, ração, kg; total do dia*)  → baixa no estoque
  │       ├─ Despesca (data, qtd, peso total, média*, cliente, final?)    várias por ciclo
  │       └─ Mortalidade (data, qtd, causa)                              opcional
  ├─ ClimaDiario (data, temp. ambiente, umidade, vento, pressão, chuva, estação) — *automático*
@@ -322,14 +322,20 @@ dado de exemplo deixava dúvida, decidimos (2026-10-07):
 - **Medição é por tanque**, ligada ao ciclo ativo (a planilha só omitiu a coluna).
 - **T_Agua × T_Ambi:** as descrições em `Paramentros` estão trocadas por erro de digitação.
   Temperatura da água é medida; temperatura ambiente vem da internet.
-- **Arraçoamento:** `Quant(kg)` é por trato e o total do dia = vezes × quant (calculado). O consumo
-  acumulado e o estoque são calculados a partir das compras, nunca digitados (o "8.000 kg" é
-  fictício). O alerta verde/amarelo/vermelho é do **estoque**, com limites **configuráveis**.
+- **Arraçoamento:** ~~`Quant(kg)` é por trato e o total do dia = vezes × quant~~ — **corrigido pelo
+  áudio de 2026-10-07**: cada **trato é um registro próprio** (hora + kg, as quantidades variam ao
+  longo do dia) e o app **soma o total diário**. O consumo acumulado e o estoque são calculados a
+  partir das compras, nunca digitados (o "8.000 kg" é fictício). O alerta verde/amarelo/vermelho é
+  do **estoque**, com limites **configuráveis**.
 - **Compras:** gravar quantidade + **valor total**; o preço unitário é calculado. Estoque por item
   (tipo + marca + especificação).
 - **Povoamento:** "marca" = fornecedor/linhagem do alevino; "vacina" = sim/não.
 - **Biometria:** "nota" = avaliação do lote (o app pode sugerir pela média × esperado); "fato" =
   motivo da pesagem.
+
+> ⚠️ **Áudio de 2026-10-07 (mais recente):** a planilha era a v1.0; ele já está fazendo a **v2.0** e
+> quer **alinhar numa reunião** (proposta: 11/10) antes de implementarmos regras de negócio. As
+> decisões abaixo são **propostas para levar à reunião**, não definitivas.
 
 **Atualização (2026-10-07):** o Ananias **não registra nada hoje** — a planilha é só ilustrativa.
 Por isso também decidimos: despesca **várias por ciclo** (a final encerra o ciclo); **mortalidade**

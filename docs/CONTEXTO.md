@@ -26,6 +26,25 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
 **relatórios com gráficos de barra e de linha**. A análise da planilha está em
 `NOTAS-TECNICAS.md` §11.
 
+Em **2026-10-07** veio um terceiro áudio (`transcricao-audio-ananias-2026-10-07.txt`), que muda a
+forma de trabalhar:
+- A planilha era só a **v1.0, para dar ideia**. Ele já está na **v2.0** (mais colunas, mais abas e
+  telas de entrada pensadas para facilitar o registro) e vai mandar quando terminar.
+- Ele quer **participar de perto**: "sou chato nesse negócio", "vai ter muito ajuste", "a pessoa
+  que está quente do negócio tem que estar colada com o programador". Pediu uma **reunião antes**
+  para evitar retrabalho.
+- Prioridade dele: **facilidade para entrar com os dados**.
+- Exemplo que ele deu: o **arraçoamento** é registrado **a cada trato** (manhã, meio-dia, tarde,
+  com quantidades diferentes) e o sistema **soma o total do dia**.
+- **Reunião proposta: domingo, 11/10/2026** (sábado ele não pode; segunda, 12/10, é feriado).
+
+**Abordagem de entrega (decisão do Kayo, 2026-10-07):** não dá para entregar o app completo de
+primeira. O app é construído **em módulos**, sobre um **alicerce** que alimenta todos eles
+(Propriedade → Tanque → Ciclo, já pronto). Para cada módulo de negócio: **combinar o fluxo com o
+Ananias → construir → ele usa no celular → ajustar**. A reunião de 11/10 serve para mostrar o
+alicerce rodando (APK) e **combinar a ordem dos módulos e o fluxo do primeiro**; a planilha v2.0
+vira referência para detalhar cada módulo na vez dele.
+
 ## Modelo de negócio (visão do Sr. Ananias)
 
 1. **Fase 1** — usar o app na própria chácara/criação dele.
@@ -50,7 +69,8 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
    consolidada em 07/10/2026, respondendo total ou parcialmente as perguntas 3–7, 12–14 e 17)
    - **Importante:** ele **não registra nada hoje**; a planilha é só ilustrativa. Requisitos são
      decididos por nós, com padrões configuráveis no app.
-   - **Pendente:** enviar a **Mensagem 2** (só bioflocos e kit de medição).
+   - ~~Enviar a Mensagem 2~~ → as duas perguntas vão para a **reunião de 11/10**.
+   - **Pendente:** receber a **planilha v2.0** e fazer a reunião com ele.
 4. [~] Consolidar respostas → modelagem de dados definitiva + escopo do MVP.
    - Modelo-alvo e nova ordem do MVP propostos em `NOTAS-TECNICAS.md` §3, §5 e §11 (2026-10-07).
      Os pontos que dependem das perguntas 21, 25–27 estão marcados com `?`.
@@ -92,6 +112,8 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
     por área × altura. Migração v1→v2 validada no emulador com dados existentes.
 15. [ ] **Medição de água** (catálogo de parâmetros + leituras em formato longo) + faixas de
     referência para tilápia (pesquisa) + alertas + gráfico de linha.
+    Primeiro módulo candidato: **combinar o fluxo com o Ananias na reunião de 11/10** e então
+    construir (não depende da planilha v2.0 completa).
 
 ## Projeto de código
 
@@ -113,8 +135,9 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
     (nome exibido no header do menu); carregada no `main`.
   - Rota inicial agora é `/dashboard` (Painel); `/tanques` continua para gestão/CRUD. Navegação
     pelo drawer: Painel · Tanques · Propriedade · Configurações.
-- Próximo no código: **Medição de água** (passo 15). Ordem completa do MVP em
-  `NOTAS-TECNICAS.md` §5.
+- Próximo no código: **Medição de água** (passo 15), depois de combinar o fluxo com o Ananias na
+  reunião de 11/10. Entrega em módulos sobre o alicerce já pronto. Ordem do MVP em
+  `NOTAS-TECNICAS.md` §5 (a confirmar com ele).
 
 ## Arquivos deste projeto
 

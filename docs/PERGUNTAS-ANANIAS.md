@@ -7,7 +7,11 @@
 > ⚠️ **Contexto (07/10/2026):** o Sr. Ananias **não registra nada hoje** — a planilha foi só um
 > exemplo de como ele imagina o app. Perguntas sobre "como o senhor anota/faz" não têm resposta
 > pronta. Regra: **decidimos nós** (com pesquisa e padrões configuráveis no app) e perguntamos a
-> ele só o que depende da estrutura física dele. A mensagem válida é a **Mensagem 2** abaixo.
+> ele só o que depende da estrutura física dele.
+>
+> ⚠️ **Atualização (áudio de 07/10/2026):** ele quer **participar de perto** e propôs uma
+> **reunião (domingo, 11/10)**. A Mensagem 2 **não será enviada**: as perguntas e as decisões
+> "deduzidas por nós" viram **pauta da reunião** para ele confirmar.
 
 ---
 

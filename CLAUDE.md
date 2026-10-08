@@ -16,6 +16,9 @@ Ver `README.md` para visão e estado atual.
 - `docs/FAIXAS-IDEAIS-TILAPIA.md` — faixas dos parâmetros da água (base dos alertas), com fontes.
 - `docs/Pla_Peixe (3).xlsx` — planilha-exemplo do produtor (análise em `NOTAS-TECNICAS.md` §11).
 - `docs/transcricao-audio-ananias*.txt` — transcrições dos áudios do produtor.
+  O de **2026-10-07** é importante: ele quer desenhar o app junto. Abordagem: entregar **em
+  módulos** sobre o alicerce (Propriedade → Tanque → Ciclo); o fluxo de cada módulo de negócio é
+  combinado com ele antes de construir, e ajustado depois que ele usar.
 
 Ao mudar modelagem/escopo/progresso, **atualize também esses docs**, não só o código.
 (Origem: foram copiados de `~/Documentos/IdeiaSistema`; a cópia versionada no repo é a

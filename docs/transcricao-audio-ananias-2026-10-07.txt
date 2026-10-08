@@ -1,0 +1,56 @@
+[00:00-00:02] Apoio de caio.
+[00:02-00:04] Pois é, eu te mandei essa planilha.
+[00:04-00:09] A princípio era só para você dar uma olhada e a gente se reuniu para conversar, sabe?
+[00:09-00:12] Porque de repente vai ter retrabalho.
+[00:12-00:15] Se você faz uma coisa e me mostra, não é isso.
+[00:15-00:18] Não é isso aí, né?
+[00:18-00:25] Então, isso ele esteja preparado porque eu sou chato nesse negócio, sabe?
+[00:25-00:30] E a gente vai mexer nisso aí várias vezes.
+[00:30-00:34] Porque eu acredito que essa a não vai soltar as coisas assim, puf!
+[00:34-00:35] Né?
+[00:35-00:39] Na lascada assim ela vai entregar tudo que a gente quer, né?
+[00:39-00:44] Então, vai ter muita ajuste, né?
+[00:44-00:47] E isso eu tenho que estar de perto, né?
+[00:47-00:52] Porque sou eu que vou trabalhar o aplicativo, né?
+[00:53-00:57] Então, o que está na minha cabeça, o que eu preciso aqui,
+[00:57-00:59] com certeza não está na sua cabeça.
+[00:59-01:02] Você nem criapê, você cria, né?
+[01:02-01:09] E na internet, se procurar na internet, você vai conseguir 1% do que tem que ser feito aqui, né?
+[01:09-01:16] Então, a pessoa que tem que estar quente do negócio,
+[01:16-01:20] tem que estar colada com um programador, né?
+[01:20-01:26] Então, a princípio essa planilha era só para você ter uma ideia.
+[01:26-01:29] E eu já reformulei ela porque foi...
+[01:29-01:32] Essa aí foi a primeira versão, versão 1.0.
+[01:32-01:35] Eu já estou na versão 2.0 que está dentro, né?
+[01:35-01:40] Porque tive que acrescentar algumas colunas, para introduzir alguns dados.
+[01:40-01:43] Tive que acrescentar mais planilhas dentro dessa planilha, né?
+[01:43-01:46] Eu chamo planilhas cada página dessa, né?
+[01:46-01:50] Tive que acrescentar mais o que vai aparecer em dados.
+[01:50-01:53] Aí eu também estou raciocinando como é que vai funcionar, né?
+[01:53-01:57] Na hora de entrar com os dados, qual é a dificuldade de entrar com os dados?
+[01:57-02:01] Eu preciso de facilidade, não dificuldade, né?
+[02:01-02:06] Agora, a mesma noite, eu já tinha gerado uma página, uma planilha,
+[02:06-02:10] para entrar de dados, por exemplo, na hora da ação, né?
+[02:11-02:13] Do jeito que eu desenhei a planilha aqui,
+[02:13-02:17] vai ficar difícil de fazer o registro do raciocinamento.
+[02:17-02:23] Eu já tive que bolar uma outra planilha para fazer o registro do raciocinamento diário, né?
+[02:23-02:27] Vai ser, não é uma vez só que dar a ação, né?
+[02:27-02:30] Dar várias vezes por dia, né?
+[02:30-02:36] E cada vez que você joga a ação, é um tanto, né?
+[02:36-02:41] De manhã é tanto, meio dia é tanto, de tarde é mais ou é menos, então...
+[02:41-02:46] Então cada, cada raciocinamento, isso vai ter que ser lançado o valor que foi dado.
+[02:46-02:48] No final do dia, soma, né?
+[02:48-02:52] E o sistema vai somar, olha, hoje tem tantos quilos de ação.
+[02:52-02:56] Amanhã pode dar mais, pode dar menos, pode dar a mesma coisa, o que é?
+[02:56-02:58] Então tem que ter uma facilidade.
+[02:58-03:05] Então eu estou bolando aqui coisas para o sistema, é facilitar entrar de dados, né?
+[03:05-03:07] Para fazer o registro.
+[03:07-03:13] Então quer dizer, eu vou terminar ainda de introduzir os dados, que tem algumas páginas que está faltando.
+[03:13-03:19] E aí eu te mando, eu te mando e...
+[03:19-03:23] E a gente marca uma reunião no fim de semana, se quiser.
+[03:23-03:26] O sábado, domingo.
+[03:26-03:32] Esse sábado não vai dar, eu vou ter pedreiro aqui na chaca, mas domingo dá.
+[03:32-03:37] E segunda-feira é feriado, é dia das crianças, né?
+[03:37-03:43] Então para a gente sentar e conversar, eu te explicar como é que eu quero a coisa.
+[03:43-03:46] Dá para você não fazer retrabalho.
+[03:46-03:48] Você faz uma coisa e não é o que eu quero.
