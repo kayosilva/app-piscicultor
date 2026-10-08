@@ -14,6 +14,7 @@ Ver `README.md` para visão e estado atual.
 - `docs/NOTAS-TECNICAS.md` — parâmetros, modelagem, decisões de arquitetura, ambiente.
 - `docs/PERGUNTAS-ANANIAS.md` — requisitos ainda em aberto com o produtor.
 - `docs/FAIXAS-IDEAIS-TILAPIA.md` — faixas dos parâmetros da água (base dos alertas), com fontes.
+- `docs/REUNIAO-*.md` — pautas e anotações das reuniões com o produtor.
 - `docs/Pla_Peixe (3).xlsx` — planilha-exemplo do produtor (análise em `NOTAS-TECNICAS.md` §11).
 - `docs/transcricao-audio-ananias*.txt` — transcrições dos áudios do produtor.
   O de **2026-10-07** é importante: ele quer desenhar o app junto. Abordagem: entregar **em

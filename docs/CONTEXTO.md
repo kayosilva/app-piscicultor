@@ -71,6 +71,8 @@ vira referência para detalhar cada módulo na vez dele.
      decididos por nós, com padrões configuráveis no app.
    - ~~Enviar a Mensagem 2~~ → as duas perguntas vão para a **reunião de 11/10**.
    - **Pendente:** receber a **planilha v2.0** e fazer a reunião com ele.
+     **Pauta pronta:** `REUNIAO-2026-10-11.md` (demonstração com APK, ordem dos módulos, fluxo
+     da Medição de água, decisões a confirmar).
 4. [~] Consolidar respostas → modelagem de dados definitiva + escopo do MVP.
    - Modelo-alvo e nova ordem do MVP propostos em `NOTAS-TECNICAS.md` §3, §5 e §11 (2026-10-07).
      Os pontos que dependem das perguntas 21, 25–27 estão marcados com `?`.
@@ -145,6 +147,7 @@ vira referência para detalhar cada módulo na vez dele.
 - `NOTAS-TECNICAS.md` — parâmetros, uso dos dados, modelagem, tecnologia, MVP.
 - `PERGUNTAS-ANANIAS.md` — roteiro de perguntas para a conversa com o Sr. Ananias.
 - `FAIXAS-IDEAIS-TILAPIA.md` — faixas ideal/atenção/crítico dos parâmetros da água, com fontes.
+- `REUNIAO-2026-10-11.md` — pauta (e anotações) da reunião de 11/10 com o Sr. Ananias.
 - `transcricao-audio-ananias.txt` — transcrição do áudio original (2026-09-29).
 - `Pla_Peixe (3).xlsx` — planilha-exemplo do Ananias (2026-10-03).
 - `WhatsApp Ptt 2026-10-03 at 14.50.22.ogg` + `transcricao-audio-ananias-2026-10-03.txt` — áudio

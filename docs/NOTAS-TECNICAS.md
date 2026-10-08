@@ -342,3 +342,25 @@ Por isso também decidimos: despesca **várias por ciclo** (a final encerra o ci
 entra como registro opcional; **equipamentos** vão para o backlog; as **tabelas de crescimento e
 de ração** e as **faixas ideais** (`FAIXAS-IDEAIS-TILAPIA.md`) vêm de pesquisa nossa e ficam
 editáveis no app. Para ele só vão duas perguntas: bioflocos e kit de medição (Mensagem 2).
+
+## 12. Distribuição do APK para o produtor
+
+> Aprendido ao gerar o APK da reunião de 2026-10-11.
+
+- **Formato:** usar sempre o **APK universal** (`flutter build apk --release`, ~55 MB — roda em
+  qualquer Android). Não misturar com os APKs por arquitetura (`--split-per-abi`): eles recebem
+  `versionCode` com prefixo da ABI (arm64 = 2001, x86_64 = 4001) e, depois de instalado um
+  deles, o universal (versionCode 1) é recusado como *downgrade*.
+- **Versão:** a cada entrega, **subir o `version` do `pubspec.yaml`** (o número após o `+` é o
+  `versionCode`; precisa sempre crescer), senão o Android não instala por cima.
+- **Assinatura:** hoje o release é assinado com a **chave de debug** desta máquina
+  (`~/.android/debug.keystore`). Atualizações só instalam por cima se vierem **da mesma chave**;
+  se ela se perder (ex.: formatar a máquina, como em 2026-09-30), o app teria que ser
+  desinstalado — **apagando os dados do produtor**. Antes de ele começar a lançar dados reais:
+  criar uma keystore de release (fora do git) **com backup**, ou no mínimo guardar uma cópia da
+  `debug.keystore`.
+- **`applicationId`** (`br.com.piscicultor`) também não pode mudar depois que ele usar: mudar o
+  id = outro app, sem os dados.
+- Testar release no emulador: `run-as` não funciona em build de release (não é *debuggable*);
+  validar pela tela. Para voltar ao debug depois de um release com versionCode maior:
+  `adb install -r -d app-debug.apk`.
