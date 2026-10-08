@@ -1,12 +1,12 @@
 # Projeto: App de Controle de Criação de Peixes (Piscicultura)
 
 > Documento de contexto — resumo da ideia, origem e modelo de negócio.
-> Última atualização: 2026-09-30
+> Última atualização: 2026-10-07
 
 ## Origem
 
-Ideia trazida pelo **Sr. Ananias** por áudio de WhatsApp (`WhatsApp Ptt 2026-09-29 at 17.20.22.ogg`,
-transcrição completa em `WhatsApp Ptt 2026-09-29 at 17.20.22.ogg.txt`).
+Ideia trazida pelo **Sr. Ananias** por áudio de WhatsApp em 2026-09-29 (transcrição em
+`transcricao-audio-ananias.txt`).
 
 Ele quer um app para **controle de criação de peixe** (piscicultura) na chácara dele. Pontos que
 ele levantou no áudio:
@@ -19,6 +19,12 @@ ele levantou no áudio:
 - Ele acha que **não é tão complexo**. Já programou em dBase IV e C há uns 30 anos.
 - Já **testou apps concorrentes** (inclusive de locação) e achou que estão **"fracos"** — dá pra
   melhorar.
+
+Em **2026-10-03** ele mandou a **planilha-exemplo** (`Pla_Peixe (3).xlsx`) e um segundo áudio
+(`transcricao-audio-ananias-2026-10-03.txt`). Recados do áudio: a planilha mostra os dados a
+armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio app**; e ele quer
+**relatórios com gráficos de barra e de linha**. A análise da planilha está em
+`NOTAS-TECNICAS.md` §11.
 
 ## Modelo de negócio (visão do Sr. Ananias)
 
@@ -40,10 +46,13 @@ ele levantou no áudio:
 2. [x] Levantar visão inicial (parâmetros, o que fazer com os dados, modelagem, MVP, tecnologia)
    → ver `NOTAS-TECNICAS.md`.
 3. [~] **Enviar perguntas ao Sr. Ananias** para levantar requisitos reais
-   → ver `PERGUNTAS-ANANIAS.md`. (pergunta 1 respondida em 30/09/2026)
-   - **Pendente:** ele vai enviar uma **planilha-exemplo** de como pensa em armazenar os dados —
-     material valioso que deve antecipar as perguntas 6–9 (parâmetros/faixas).
-4. [ ] Consolidar respostas → modelagem de dados definitiva + escopo do MVP.
+   → ver `PERGUNTAS-ANANIAS.md`. (pergunta 1 respondida em 30/09/2026; planilha recebida e
+   consolidada em 07/10/2026, respondendo total ou parcialmente as perguntas 3–7, 12–14 e 17)
+   - **Pendente:** enviar as **perguntas novas 19–28**, que surgiram da planilha, e a **9**
+     (faixas ideais), que continua sem resposta.
+4. [~] Consolidar respostas → modelagem de dados definitiva + escopo do MVP.
+   - Modelo-alvo e nova ordem do MVP propostos em `NOTAS-TECNICAS.md` §3, §5 e §11 (2026-10-07).
+     Os pontos que dependem das perguntas 19–28 estão marcados com `?`.
 5. [ ] (Opcional) Pesquisa de domínio: faixas ideais por espécie, com fontes.
 6. [x] Esqueleto do projeto Flutter criado em **`~/dev/piscicultor`** (2026-09-30) — GetX,
    estrutura feature-first, tema, build validada no emulador. Ambiente reinstalado
@@ -68,12 +77,20 @@ ele levantou no áudio:
     padrão — sem lista nem "nova propriedade" (o CRUD completo entra na Fase 2, multi-tenant). O nome
     editado reflete na hora no título do painel e no **header do menu** (via serviço global reativo
     `PropriedadeAtualService`). Módulo `propriedade`.
-12. [ ] **CRUD de Leituras de água** — depende da planilha do Ananias p/ definir os parâmetros/faixas.
-13. [ ] Consolidar a planilha do Ananias (quando chegar) → `leitura_agua` + faixas + alertas.
+12. [x] **Planilha do Ananias consolidada** (2026-10-07) — análise aba por aba, modelo-alvo,
+    inconsistências e perguntas novas. Ver `NOTAS-TECNICAS.md` §11.
+13. [x] **Repositório git** criado (2026-10-07) — privado em `github.com/kayosilva/app-piscicultor`,
+    remoto via alias SSH `github-pessoal` (chave pessoal) e autor com o e-mail pessoal.
+14. [ ] **Ajustes em Tanque e Ciclo** vindos da planilha (altura, material, tipo "suspenso", peso
+    inicial, vacina, fornecedor do alevino) → bump de `_version` + migração.
+15. [ ] **Medição de água** (catálogo de parâmetros + leituras em formato longo) + faixas de
+    referência para tilápia (pesquisa) + alertas + gráfico de linha.
 
 ## Projeto de código
 
-- **Local:** `/home/gran-001081/dev/piscicultor` (separado dos docs de planejamento, que ficam aqui).
+- **Local:** `/home/gran-001081/dev/piscicultor`. Os docs de planejamento ficam em `docs/`.
+- **Repositório:** `git@github.com:kayosilva/app-piscicultor.git` (privado). Neste repo o remoto usa
+  `git@github-pessoal:...`, porque o `github.com` do `~/.ssh/config` aponta para a chave do trabalho.
 - **Stack:** Flutter + GetX + (SQLite/Hive/Dio/fl_chart/dotenv já como dependências).
 - `applicationId`: `br.com.piscicultor` (provisório — trocar pelo domínio real depois).
 - Rodar: `cd ~/dev/piscicultor && flutter run -d emulator-5554` (com o emulador `piscicultura` aberto).
@@ -89,14 +106,18 @@ ele levantou no áudio:
     (nome exibido no header do menu); carregada no `main`.
   - Rota inicial agora é `/dashboard` (Painel); `/tanques` continua para gestão/CRUD. Navegação
     pelo drawer: Painel · Tanques · Propriedade · Configurações.
-- Próximo no código: **CRUD de Leituras de água** — depende da planilha do Ananias para
-  definir os parâmetros e faixas; depois vêm os alertas e gráficos.
+- Próximo no código: **ajustes em Tanque e Ciclo** (passo 14) e, em seguida, a **Medição de água**
+  (passo 15). Ordem completa do MVP em `NOTAS-TECNICAS.md` §5.
 
 ## Arquivos deste projeto
 
 - `CONTEXTO.md` — este arquivo (visão geral e negócio).
 - `NOTAS-TECNICAS.md` — parâmetros, uso dos dados, modelagem, tecnologia, MVP.
 - `PERGUNTAS-ANANIAS.md` — roteiro de perguntas para a conversa com o Sr. Ananias.
-- `WhatsApp Ptt 2026-09-29 at 17.20.22.ogg` — áudio original.
-- `WhatsApp Ptt 2026-09-29 at 17.20.22.ogg.txt` — transcrição do áudio.
-- `transcrever.py` — script de transcrição (faster-whisper) para novos áudios.
+- `transcricao-audio-ananias.txt` — transcrição do áudio original (2026-09-29).
+- `Pla_Peixe (3).xlsx` — planilha-exemplo do Ananias (2026-10-03).
+- `WhatsApp Ptt 2026-10-03 at 14.50.22.ogg` + `transcricao-audio-ananias-2026-10-03.txt` — áudio
+  que acompanhou a planilha e sua transcrição.
+- **Fora do repo** (`~/Documentos/IdeiaSistema/`): o áudio original de 29/09 e o `transcrever.py`
+  (faster-whisper), com o venv `.venv-whisper`. Para transcrever um áudio novo:
+  `~/Documentos/IdeiaSistema/.venv-whisper/bin/python ~/Documentos/IdeiaSistema/transcrever.py "<arquivo.ogg>"`.

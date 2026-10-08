@@ -8,17 +8,21 @@ ajudando o produtor a não perder um tanque inteiro por um parâmetro fora da fa
 > de negócio e o levantamento de requisitos ficam em [`docs/`](docs/):
 > [`CONTEXTO.md`](docs/CONTEXTO.md) (visão e negócio),
 > [`NOTAS-TECNICAS.md`](docs/NOTAS-TECNICAS.md) (parâmetros, modelagem, ambiente),
-> [`PERGUNTAS-ANANIAS.md`](docs/PERGUNTAS-ANANIAS.md) (requisitos em aberto) e
-> [`transcricao-audio-ananias.txt`](docs/transcricao-audio-ananias.txt).
+> [`PERGUNTAS-ANANIAS.md`](docs/PERGUNTAS-ANANIAS.md) (requisitos em aberto), a
+> planilha-exemplo do produtor ([`Pla_Peixe (3).xlsx`](docs/), analisada no §11 das notas
+> técnicas) e as transcrições dos áudios dele.
 
 ## Estado atual (MVP em construção)
 
 - [x] Esqueleto Flutter + GetX, tema claro/escuro, navegação por drawer.
 - [x] Camada de dados local (SQLite): `Propriedade → Tanque → Ciclo`.
-- [x] Dashboard + **CRUD de Tanques** (criar / editar / excluir).
-- [ ] CRUD de **Ciclos** (model/tabela/repositório prontos; falta a UI).
-- [ ] Leituras de água + faixas ideais + alertas (aguardando planilha do produtor).
-- [ ] Biometria, arraçoamento, relatórios, gráficos.
+- [x] **Painel** (tela inicial com KPIs e um cartão por tanque).
+- [x] **CRUD de Tanques** e **CRUD de Ciclos** (um ciclo ativo por tanque; encerrar = despesca).
+- [x] Edição da **Propriedade**, identidade visual (ícone e splash) e localização pt-BR.
+- [x] Planilha do produtor analisada → modelo-alvo e ordem do MVP (`docs/NOTAS-TECNICAS.md` §5 e §11).
+- [ ] Ajustes em Tanque e Ciclo vindos da planilha (altura, material, peso inicial, vacina...).
+- [ ] Medição de água + faixas ideais + alertas + gráfico de linha.
+- [ ] Biometria, despesca, arraçoamento/estoque, clima automático, relatórios e gráficos.
 - [ ] Sync com nuvem / multi-tenant (Fase 2 — SaaS).
 
 ## Tecnologias

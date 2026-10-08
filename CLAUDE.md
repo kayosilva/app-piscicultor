@@ -13,7 +13,8 @@ Ver `README.md` para visão e estado atual.
 - `docs/CONTEXTO.md` — ideia, negócio (Fase 1: uso próprio → Fase 2: SaaS), próximos passos.
 - `docs/NOTAS-TECNICAS.md` — parâmetros, modelagem, decisões de arquitetura, ambiente.
 - `docs/PERGUNTAS-ANANIAS.md` — requisitos ainda em aberto com o produtor.
-- `docs/transcricao-audio-ananias.txt` — transcrição do áudio original do produtor.
+- `docs/Pla_Peixe (3).xlsx` — planilha-exemplo do produtor (análise em `NOTAS-TECNICAS.md` §11).
+- `docs/transcricao-audio-ananias*.txt` — transcrições dos áudios do produtor.
 
 Ao mudar modelagem/escopo/progresso, **atualize também esses docs**, não só o código.
 (Origem: foram copiados de `~/Documentos/IdeiaSistema`; a cópia versionada no repo é a

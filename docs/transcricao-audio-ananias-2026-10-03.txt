@@ -1,0 +1,8 @@
+[00:00-00:07] Ok, a princípio, esses são os dados que serão armazenados no banco de dados
+[00:07-00:18] e daí o sistema tem que criar interface para entrar com esses dados, né, alguns dados, a maioria dos dados serão digitados
+[00:18-00:24] outros serão gerados pelo próprio aplicativo, né, pela inteligência do sistema
+[00:25-00:39] e depois vai ter uma série de relatórios, né, de, sei lá como é que fala, de página, de gerando informações que a gente quer, né
+[00:39-00:51] então você quer fazer um levantamento de saber uma série das informações que está armazenada, né,
+[00:52-00:59] você quer transformar a informação, né, vai ter uma interface, um, sei como é que chama, né,
+[00:59-01:08] que vai mostrar esses dados para a gente, gerando gráfico inclusive, né, gráfico de barra, gráfico de linha, né,
+[01:08-01:19] é um sistemia que quando a gente fazia no braço a gente fazia bonitinho, hoje com a inteligência social deve ser muito mais rápido e muito mais bonito, né

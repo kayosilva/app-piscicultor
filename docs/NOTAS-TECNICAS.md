@@ -1,7 +1,7 @@
 # Notas Técnicas — App de Piscicultura
 
 > Levantamento inicial (superficial, a confirmar com o Sr. Ananias e/ou pesquisa de domínio).
-> Última atualização: 2026-09-30
+> Última atualização: 2026-10-07 (planilha do Ananias consolidada — ver §11)
 
 ## 1. Parâmetros de uma criação de peixes
 
@@ -28,6 +28,8 @@ Dividem-se em dois grupos — o app precisa dos dois.
 
 > ⚠️ As **faixas ideais** (valor "bom" x "problema") variam por espécie. É o que alimenta os
 > alertas. Confirmar com o Ananias (pergunta 9) ou levantar em pesquisa de domínio com fontes.
+> A planilha (§11) confirmou a lista de parâmetros, mas **não trouxe as faixas** (coluna "Valor"
+> vazia) — continua pendente.
 
 ## 2. O que fazer com os dados (onde está o valor)
 
@@ -47,14 +49,35 @@ Peça-chave: **tanque ≠ ciclo**.
   e povoar de novo, é **outro ciclo** no mesmo tanque.
 - Todo o histórico pendura no **ciclo**, não no tanque.
 
+**Implementado hoje** (2026-09-30):
+
 ```
-Propriedade  (a fazenda/chácara — topo da hierarquia)
+Propriedade (nome, localizacao)
  └─ Tanque (nome, tipo: escavado / tanque-rede / alvenaria / outro; volume_m3, area_m2)
-     └─ Ciclo (espécie, data_povoamento, qtd_inicial, origem_alevinos, status, data_despesca)
-         ├─ LeituraDeAgua (data/hora, OD, temp, pH, amônia, nitrito, ...)
-         ├─ Biometria (data, peso médio, nº amostrado)
-         ├─ Arraçoamento (data, kg de ração)
-         └─ Mortalidade (data, qtd)
+     └─ Ciclo (especie, data_povoamento, qtd_inicial, origem_alevinos, status, data_despesca)
+```
+
+**Modelo-alvo** (revisado em 2026-10-07 a partir da planilha do Ananias — detalhes e lacunas em
+§11; os pontos marcados com `?` dependem das perguntas 19–28 de `PERGUNTAS-ANANIAS.md`):
+
+```
+Propriedade (+ latitude/longitude — necessárias p/ o clima automático)
+ ├─ Tanque (+ altura_m, material; tipo ganha "suspenso"; volume = área × altura)
+ │   └─ Ciclo = "Povoamento" na planilha
+ │       (especie, data_povoamento, qtd_inicial, + peso_inicial_g, + fornecedor/marca do alevino,
+ │        + vacinado, status, data_encerramento)
+ │       ├─ Medicao (data/hora) ── MedicaoValor (parametro, valor)      ? por tanque ou geral (P19)
+ │       ├─ Biometria (data, amostra, peso total, média, esperado*, nota, motivo, observação)
+ │       ├─ Arracoamento (data, ração, vezes/dia, kg)                   → baixa no estoque
+ │       ├─ Despesca (data, qtd, peso total, média*, cliente)            ? parcial / várias (P21)
+ │       └─ Mortalidade (data, qtd)                                     ? não está na planilha (P26)
+ ├─ ClimaDiario (data, temp. ambiente, umidade, vento, pressão, chuva, estação) — *automático*
+ ├─ Insumo / Compra (tipo, marca, especificação, embalagem, qtd, valor) → Estoque
+ └─ Pessoa (nome, tipo: cliente/fornecedor, celular, CPF/CNPJ)
+
+Catálogos: Especie · Marca · Parametro (sigla, nome, unidade, faixas por espécie) · Equipamento
+Referência (pesquisa): TabelaCrescimento (dias × peso esperado) · TabelaArracoamento (peso × % ração)
+* = calculado pelo app
 ```
 
 > Decisões de implementação (2026-09-30, validadas com o Kayo):
@@ -93,6 +116,19 @@ Propriedade  (a fazenda/chácara — topo da hierarquia)
 
 **Depois:** biometria/curva de crescimento → arraçoamento → relatório de custo →
 sync/nuvem → multi-tenant.
+
+**Revisão de ordem (2026-10-07, após a planilha):** o Ananias quer, além do registro, **telas de
+relatório com gráficos de barra e de linha** (áudio de 03/10). A ordem sugerida passa a ser:
+
+1. **Ajustes baratos no que já existe** — Tanque (`altura_m`, `material`, tipo "suspenso") e Ciclo
+   (`peso_inicial_g`, `vacinado`, fornecedor do alevino). Bump de `_version` + migração.
+2. **Medição de água** (catálogo de parâmetros + leituras) com faixas de referência para tilápia
+   levantadas em pesquisa e confirmadas com ele depois → alerta visual + gráfico de linha.
+3. **Biometria** + curva de crescimento esperada (depende da `Tab_Cresci`).
+4. **Despesca** como evento próprio (com cliente) — e cadastro de **Pessoas**.
+5. **Arraçoamento + Compras/Estoque** (com alerta de estoque) — depende da `Tab_Racao`.
+6. **Clima automático** pela data + coordenada da propriedade.
+7. **Relatórios** consolidando tudo (TCA, biomassa, custo por ciclo).
 
 ## 6. Decisão de arquitetura (definida em 2026-09-30)
 
@@ -202,3 +238,74 @@ App corporativo grande (30+ módulos) — **adotar apenas o essencial, em versã
 ### Atenção
 - GPS é **dado sensível**: no SaaS, pedir consentimento e permitir editar/remover a localização.
 - Metade dos campos acima depende das respostas 17–18 do Ananias — não cravar schema antes disso.
+
+## 11. Planilha do Ananias (`docs/Pla_Peixe (3).xlsx`) — análise
+
+> Recebida junto com o áudio de 2026-10-03 (transcrição em
+> `transcricao-audio-ananias-2026-10-03.txt`) e consolidada em 2026-10-07.
+> No áudio ele diz: (1) esses são os dados a armazenar; (2) **a maioria será digitada, parte gerada
+> pelo próprio app**; (3) quer **relatórios/telas que transformem os dados em informação, com
+> gráficos de barra e de linha**.
+
+### Contexto real da criação (dados de exemplo da planilha)
+- **4 tanques** iguais: 100 m², 1 m de altura (100 m³), **suspensos**, de **geomembrana**.
+- Espécies cadastradas: **tilápia** (a única usada nos povoamentos), lambari, pintado.
+- Povoamentos de **3.000–4.000 alevinos** de ~2 g, **escalonados a cada 30 dias** (um tanque por
+  mês) — cada tanque é repovoado depois da despesca. Confirma o modelo **tanque ≠ ciclo**.
+- Latitude **-15.74** (região do DF/entorno).
+
+### Mapeamento aba → entidade
+
+| Aba | Vira | Observações |
+| --- | --- | --- |
+| `Indicadores` | — | Só um índice (Tanque, Peixe, Parametros); parece rascunho. |
+| `Tanques` | `tanque` | Novos: `altura`, `material`; `m3 = m2 × altura` (calculado); tipo "Suspenso" não existe no nosso enum. |
+| `Peixes` | catálogo `especie` | Hoje `ciclo.especie` é texto livre. |
+| `Povoamento` | `ciclo` | Novos: `peso(g)` inicial, `marca` (do alevino? valor "Genérico"), `vacina` (Sim/Não). |
+| `Biometria` | `biometria` (no ciclo) | `idade` = data − povoamento; `media = peso total ÷ amostra`; `esperado` vem da `Tab_Cresci`; `nota` (Bom/Excelente/Ruim); `fato` (Rotina/Biometria/Outro); observação. |
+| `Despesca` | `despesca` (no ciclo) | `idade` e `media` calculados; **`cliente`** → `pessoa`. Exemplo: 100 peixes de um lote de 3.000 → indica **despesca parcial**. |
+| `Arracoamento` | `arracoamento` (no ciclo) | Marca da ração, vezes/dia, kg; consumo acumulado; **estoque** e **alerta verde/amarelo/vermelho** (de estoque). |
+| `Compras` | `compra` / estoque | Tipos: Ração, BioRemediador, Probiótico, Bicarbonato. Ração tem granulometria (mm) e **PB** (proteína bruta, %). |
+| `Marcas` | catálogo `marca` | TilaMax, Jkw, Acqua, Guabi (marcas de ração). |
+| `Pessoas` | `pessoa` | Cliente/Fornecedor, celular, CPF/CNPJ. |
+| `Paramentros` | catálogo `parametro` | Ver lista abaixo. Coluna "Valor" (faixa) **vazia**. |
+| `Medicao` / `Med` | `medicao` + `medicao_valor` | Duas versões do mesmo dado: `Medicao` em colunas (1 linha por leitura) e `Med` em linhas (1 linha por parâmetro). **Nenhuma das duas tem coluna de tanque.** |
+| `Equipamentos` | catálogo `equipamento` | Soprador, aerador, difusor, comedouro, bomba. Uso ainda indefinido. |
+| `Tab_Racao` | referência | Vazia: "quantidade de ração de 1 g até 1 kg — dados na internet em PDF". |
+| `Tab_Cresci` | referência | Vazia: "escala de desenvolvimento em dias e peso da tilápia de 1 g a 1.000 g — PDF na internet". |
+
+### Parâmetros da água (aba `Paramentros`)
+- **Medidos (digitados):** pH, KH (alcalinidade), GH (dureza), NH₃ (amônia), NO₂ (nitrito),
+  NO₃ (nitrato), OD (oxigênio dissolvido), turbidez/transparência (cm — disco de Secchi),
+  sólidos (ml — provavelmente cone Imhoff), temperatura da água.
+- **Automáticos (internet, pela data + latitude):** temperatura ambiente, umidade, vento, pressão,
+  chuva (mm/dia), estação do ano.
+- Leitura de exemplo às **6h15** — bate com a prática de medir OD de manhã cedo.
+
+### Decisões de modelagem propostas
+- **Medição em formato longo** (`medicao` + `medicao_valor` → `parametro`), como na aba `Med`:
+  adicionar um parâmetro novo é só um registro no catálogo, sem migração de schema — importante
+  para o SaaS (cada produtor mede coisas diferentes). As faixas ficam no catálogo, por espécie.
+- **Clima separado da medição** (`clima_diario` por propriedade + data): é um dado do local, não do
+  tanque, e não deve ser duplicado em cada leitura.
+- **Clima automático × offline-first:** gravar a medição na hora e **completar o clima quando houver
+  internet**. Candidata: API **Open-Meteo** (sem chave, tem histórico) — ⚠️ o plano gratuito é só
+  para uso **não comercial**; na Fase 2 (SaaS) precisa de plano pago ou outra fonte. Exige
+  `latitude`/`longitude` na propriedade (já previsto no §10 — vira prioridade).
+- **Estação do ano** é calculada pela data + hemisfério; não precisa de API.
+- **Despesca como entidade própria** (várias por ciclo), não só a `data_despesca` do ciclo. O ciclo
+  encerra na despesca final. ⚠️ Muda a regra atual de "encerrar = despescar".
+- **Tabelas de referência** (`Tab_Cresci`, `Tab_Racao`) entram como dados semeados, a partir de
+  fontes públicas citadas (Embrapa, fabricantes de ração). São elas que geram o "esperado" da
+  biometria e a sugestão de ração do dia — a "inteligência do sistema" que ele mencionou.
+
+### Inconsistências nos dados de exemplo (não modelar em cima delas)
+- `Paramentros`: as descrições de **T_Agua** ("temperatura do ambiente", valor "internet") e
+  **T_Ambi** ("temperatura da água") parecem **trocadas**.
+- `Arracoamento`: 4 vezes × 5 kg = 20 kg, mas o total diz 25; o consumo acumulado salta de 50 para
+  125; o estoque parte de **8.000 kg fixos**, enquanto a compra registrada é de 100 sacos × 25 kg
+  = 2.500 kg.
+- `Compras`: "Valor" 80.000 para 100 sacos — não dá para saber se é total ou unitário (nem a unidade).
+- `Med`/`Medicao`: não indicam **de qual tanque** é a leitura.
+
+Tudo isso virou pergunta em `PERGUNTAS-ANANIAS.md` (19–28).
