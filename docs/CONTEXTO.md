@@ -54,7 +54,9 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
 4. [~] Consolidar respostas → modelagem de dados definitiva + escopo do MVP.
    - Modelo-alvo e nova ordem do MVP propostos em `NOTAS-TECNICAS.md` §3, §5 e §11 (2026-10-07).
      Os pontos que dependem das perguntas 21, 25–27 estão marcados com `?`.
-5. [ ] (Opcional) Pesquisa de domínio: faixas ideais por espécie, com fontes.
+5. [x] Pesquisa de domínio: **faixas ideais da tilápia**, com fontes (2026-10-07) →
+   `FAIXAS-IDEAIS-TILAPIA.md`. Falta o Ananias conferir (mensagem pronta no próprio doc), e
+   confirmar se o sistema é de **bioflocos** (pergunta 29).
 6. [x] Esqueleto do projeto Flutter criado em **`~/dev/piscicultor`** (2026-09-30) — GetX,
    estrutura feature-first, tema, build validada no emulador. Ambiente reinstalado
    (ver `NOTAS-TECNICAS.md` §8).
@@ -115,6 +117,7 @@ armazenar; a maioria será digitada, mas **parte deve ser gerada pelo próprio a
 - `CONTEXTO.md` — este arquivo (visão geral e negócio).
 - `NOTAS-TECNICAS.md` — parâmetros, uso dos dados, modelagem, tecnologia, MVP.
 - `PERGUNTAS-ANANIAS.md` — roteiro de perguntas para a conversa com o Sr. Ananias.
+- `FAIXAS-IDEAIS-TILAPIA.md` — faixas ideal/atenção/crítico dos parâmetros da água, com fontes.
 - `transcricao-audio-ananias.txt` — transcrição do áudio original (2026-09-29).
 - `Pla_Peixe (3).xlsx` — planilha-exemplo do Ananias (2026-10-03).
 - `WhatsApp Ptt 2026-10-03 at 14.50.22.ogg` + `transcricao-audio-ananias-2026-10-03.txt` — áudio

@@ -29,7 +29,8 @@ Dividem-se em dois grupos — o app precisa dos dois.
 > ⚠️ As **faixas ideais** (valor "bom" x "problema") variam por espécie. É o que alimenta os
 > alertas. Confirmar com o Ananias (pergunta 9) ou levantar em pesquisa de domínio com fontes.
 > A planilha (§11) confirmou a lista de parâmetros, mas **não trouxe as faixas** (coluna "Valor"
-> vazia) — continua pendente.
+> vazia). Faixas pesquisadas, com fontes, em **`FAIXAS-IDEAIS-TILAPIA.md`** (2026-10-07),
+> aguardando validação do Ananias.
 
 ## 2. O que fazer com os dados (onde está o valor)
 
@@ -293,6 +294,12 @@ App corporativo grande (30+ módulos) — **adotar apenas o essencial, em versã
   para uso **não comercial**; na Fase 2 (SaaS) precisa de plano pago ou outra fonte. Exige
   `latitude`/`longitude` na propriedade (já previsto no §10 — vira prioridade).
 - **Estação do ano** é calculada pela data + hemisfério; não precisa de API.
+- **Faixas com 3 níveis** (ideal / atenção / crítico = verde / amarelo / vermelho), com mínimo e
+  máximo por nível, **editáveis** pelo produtor. Valores iniciais em `FAIXAS-IDEAIS-TILAPIA.md`.
+- **Amônia:** o produtor digita a **amônia total** (é o que o kit mede) e o app **calcula a NH₃
+  tóxica** com o pH e a temperatura da mesma leitura (fórmula de Emerson; ver o doc de faixas).
+- **Unidade no catálogo de parâmetros:** nitrito/nitrato podem vir como íon ou como N
+  (N-NO₃ × 4,43 = NO₃⁻); guardar a unidade do kit.
 - **Despesca como entidade própria** (várias por ciclo), não só a `data_despesca` do ciclo. O ciclo
   encerra na despesca final. ⚠️ Muda a regra atual de "encerrar = despescar".
 - **Tabelas de referência** (`Tab_Cresci`, `Tab_Racao`) entram como dados semeados, a partir de

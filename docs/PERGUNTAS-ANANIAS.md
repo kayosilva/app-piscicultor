@@ -51,6 +51,9 @@ Sr. Ananias, pra eu montar esse app do jeito certo, me ajuda respondendo essas p
   - _Ainda em aberto:_ a aba `Paramentros` tem a coluna "Valor", mas está **vazia**. Decisão
     (07/10/2026): **nós levantamos** as faixas de referência da tilápia em pesquisa (com fontes) e
     mandamos depois para ele **só conferir**. Não entra na Mensagem 2.
+  - _Pesquisa feita (07/10/2026):_ faixas ideal/atenção/crítico com fontes (Embrapa, SRAC,
+    Kubitza) em **`FAIXAS-IDEAIS-TILAPIA.md`**, que já traz a mensagem de conferência pronta.
+    Falta ele validar.
 
 ### Sobre o que fazer quando dá ruim
 - [ ] **10.** Quando alguma medida sai do normal, o que o senhor faz? (troca água, liga aerador,
@@ -129,6 +132,10 @@ Sr. Ananias, pra eu montar esse app do jeito certo, me ajuda respondendo essas p
   (Rotina/Biometria/Outro)?
   - [x] _Deduzido por nós (07/10/2026), a planilha tem valores fictícios:_ **nota** = avaliação do lote (o app pode sugerir comparando média × esperado);
     **fato** = motivo da pesagem.
+- [ ] **29.** O senhor cria no sistema de **bioflocos**? (Tanque suspenso de geomembrana,
+  medição de sólidos, KH alto e compra de bicarbonato/probiótico sugerem que sim. Muda as faixas
+  de alcalinidade, sólidos e transparência.) Vai na mensagem de `FAIXAS-IDEAIS-TILAPIA.md`.
+  - _Resposta:_
 
 ---
 

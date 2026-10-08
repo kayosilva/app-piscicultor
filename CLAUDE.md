@@ -13,6 +13,7 @@ Ver `README.md` para visão e estado atual.
 - `docs/CONTEXTO.md` — ideia, negócio (Fase 1: uso próprio → Fase 2: SaaS), próximos passos.
 - `docs/NOTAS-TECNICAS.md` — parâmetros, modelagem, decisões de arquitetura, ambiente.
 - `docs/PERGUNTAS-ANANIAS.md` — requisitos ainda em aberto com o produtor.
+- `docs/FAIXAS-IDEAIS-TILAPIA.md` — faixas dos parâmetros da água (base dos alertas), com fontes.
 - `docs/Pla_Peixe (3).xlsx` — planilha-exemplo do produtor (análise em `NOTAS-TECNICAS.md` §11).
 - `docs/transcricao-audio-ananias*.txt` — transcrições dos áudios do produtor.
 
