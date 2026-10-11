@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../modules/dashboard/dashboard_controller.dart';
 import '../../routes/app_routes.dart';
 import '../services/propriedade_atual_service.dart';
 
@@ -105,9 +106,28 @@ class _DrawerItem extends StatelessWidget {
         selected: selected,
         onTap: () {
           Get.back(); // fecha o drawer
-          if (!selected) Get.toNamed(route);
+          if (!selected) _navegar(route);
         },
       ),
     );
+  }
+
+  /// O Painel é a raiz fixa da pilha: o menu sempre volta a ele e só então abre
+  /// a seção escolhida. Empilhar seção sobre seção criava um segundo Painel que
+  /// reaproveitava o controller antigo (o GetX não roda `onInit` de novo) e
+  /// mostrava números desatualizados. Por isso também recarrega ao voltar.
+  static void _navegar(String route) {
+    Get.until((r) => r.isFirst);
+    if (route == AppRoutes.dashboard) {
+      _recarregarPainel();
+    } else {
+      Get.toNamed(route)?.then((_) => _recarregarPainel());
+    }
+  }
+
+  static void _recarregarPainel() {
+    if (Get.isRegistered<DashboardController>()) {
+      Get.find<DashboardController>().carregar();
+    }
   }
 }
